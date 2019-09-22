@@ -1,0 +1,23 @@
+coffea.lookup\_tools.extractor.evaluator
+========================================
+
+.. currentmodule:: coffea.lookup_tools.extractor
+
+.. autoclass:: evaluator
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~evaluator.__init__
+      ~evaluator.keys
+   
+   
+
+   
+   
+   

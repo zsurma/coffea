@@ -1,0 +1,30 @@
+coffea.processor.processor.ProcessorABC
+=======================================
+
+.. currentmodule:: coffea.processor.processor
+
+.. autoclass:: ProcessorABC
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ProcessorABC.__init__
+      ~ProcessorABC.postprocess
+      ~ProcessorABC.process
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ProcessorABC.accumulator
+   
+   

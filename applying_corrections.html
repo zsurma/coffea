@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Applying corrections to columnar data &mdash; coffea 0.6.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Four Muon Spectrum" href="muonspectrum_v4.html" />
+    <link rel="prev" title="Coffea Plotting Demo" href="plotting-demo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> coffea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="introduction.html">Coffea by Example</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="histograms.html">Coffea Histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting-demo.html">Coffea Plotting Demo</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Applying corrections to columnar data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Opening-a-root-file-and-using-it-as-a-lookup-table">Opening a root file and using it as a lookup table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plotting-with-weights">Plotting with weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Importing-B-tagging-Scale-Factors">Importing B-tagging Scale Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Importing-JSON-encoded-histograms">Importing JSON-encoded histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Import-Jet-Energy-Scales-and-Uncertainties">Import Jet Energy Scales and Uncertainties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Applying-energy-scale-transformations-to-Jets">Applying energy scale transformations to Jets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="muonspectrum_v4.html">Four Muon Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">coffea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="introduction.html">Coffea by Example</a> &raquo;</li>
+        
+      <li>Applying corrections to columnar data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/applying_corrections.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Applying-corrections-to-columnar-data">
+<h1>Applying corrections to columnar data<a class="headerlink" href="#Applying-corrections-to-columnar-data" title="Permalink to this headline">¶</a></h1>
+<p>Here we will show how to use the lookup_tools package in fnal-column-analysis-tools (FCAT). It is able to read in a variety of correction files as lookup tables. We also cover here the CMS-specific JET-MET tools that are provided with FCAT.</p>
+<p><strong>Testing Data Generators:</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">coffea.util</span> <span class="k">import</span> <span class="n">awkward</span>
+<span class="kn">from</span> <span class="nn">coffea.util</span> <span class="k">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">uproot_methods</span>
+
+
+<span class="k">def</span> <span class="nf">dummy_jagged_eta_pt</span><span class="p">():</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">test_eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">entries</span><span class="p">)</span>
+    <span class="n">test_pt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">entries</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">entries</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dummy_four_momenta</span><span class="p">():</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">nrows</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="n">px</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+    <span class="n">py</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+    <span class="n">pz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+    <span class="n">m_pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="mf">0.135</span><span class="p">)</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">px</span><span class="o">*</span><span class="n">px</span> <span class="o">+</span> <span class="n">py</span><span class="o">*</span><span class="n">py</span> <span class="o">+</span> <span class="n">pz</span><span class="o">*</span><span class="n">pz</span> <span class="o">+</span> <span class="n">m_pi</span><span class="o">*</span><span class="n">m_pi</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">counts</span><span class="p">,</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">,</span><span class="n">pz</span><span class="p">,</span><span class="n">energy</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dummy_events</span><span class="p">():</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">pz</span><span class="p">,</span> <span class="n">energy</span> <span class="o">=</span> <span class="n">dummy_four_momenta</span><span class="p">()</span>
+    <span class="n">thep4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">,</span><span class="n">pz</span><span class="p">,</span><span class="n">energy</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">class</span> <span class="nc">obj</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">p4</span> <span class="o">=</span> <span class="n">thep4</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">px</span> <span class="o">=</span> <span class="n">px</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">py</span> <span class="o">=</span> <span class="n">py</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pz</span> <span class="o">=</span> <span class="n">pz</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">en</span> <span class="o">=</span> <span class="n">energy</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">py</span><span class="p">,</span><span class="n">px</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">eta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctanh</span><span class="p">(</span><span class="n">pz</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">px</span><span class="o">*</span><span class="n">px</span> <span class="o">+</span> <span class="n">py</span><span class="o">*</span><span class="n">py</span> <span class="o">+</span> <span class="n">pz</span><span class="o">*</span><span class="n">pz</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">energy</span><span class="o">*</span><span class="n">energy</span> <span class="o">-</span> <span class="p">(</span><span class="n">px</span><span class="o">*</span><span class="n">px</span> <span class="o">+</span> <span class="n">py</span><span class="o">*</span><span class="n">py</span> <span class="o">+</span> <span class="n">pz</span><span class="o">*</span><span class="n">pz</span><span class="p">)))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">blah</span> <span class="o">=</span> <span class="n">energy</span><span class="o">*</span><span class="n">px</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">counts</span>
+
+    <span class="k">class</span> <span class="nc">events</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thing</span> <span class="o">=</span> <span class="n">obj</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">events</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">gen_reco_TLV</span><span class="p">():</span>
+    <span class="n">gen_pt</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="mf">40.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">]])</span>
+    <span class="n">reco_pt</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span><span class="mf">20.2</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">,</span> <span class="mf">30.3</span><span class="p">,</span> <span class="mf">50.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">50.5</span><span class="p">],</span> <span class="p">[</span><span class="mi">60</span><span class="p">]])</span>
+
+    <span class="n">gen_eta</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">reco_eta</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span><span class="o">-</span><span class="mf">2.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.3</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">]])</span>
+
+    <span class="n">gen_phi</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="mf">0.78</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.78</span><span class="p">]])</span>
+    <span class="n">reco_phi</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromiter</span><span class="p">([[</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">0.78</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.78</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.77</span><span class="p">]])</span>
+
+    <span class="n">gen</span> <span class="o">=</span> <span class="n">uproot_methods</span><span class="o">.</span><span class="n">TLorentzVectorArray</span><span class="o">.</span><span class="n">from_ptetaphim</span><span class="p">(</span><span class="n">gen_pt</span><span class="p">,</span> <span class="n">gen_eta</span><span class="p">,</span> <span class="n">gen_phi</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">reco</span> <span class="o">=</span> <span class="n">uproot_methods</span><span class="o">.</span><span class="n">TLorentzVectorArray</span><span class="o">.</span><span class="n">from_ptetaphim</span><span class="p">(</span><span class="n">reco_pt</span><span class="p">,</span> <span class="n">reco_eta</span><span class="p">,</span> <span class="n">reco_phi</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">gen</span><span class="p">,</span> <span class="n">reco</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">coffea.lookup_tools</span> <span class="k">import</span> <span class="n">extractor</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Opening-a-root-file-and-using-it-as-a-lookup-table">
+<h2>Opening a root file and using it as a lookup table<a class="headerlink" href="#Opening-a-root-file-and-using-it-as-a-lookup-table" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span><span class="s2">&quot;testSF2d scalefactors_Tight_Electron ../tests/samples/testSF2d.histo.root&quot;</span><span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;testSF2d&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;testSF2d&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span> <span class="o">=</span> <span class="n">dummy_jagged_eta_pt</span><span class="p">()</span>
+
+<span class="c1"># test flat eval</span>
+<span class="n">test_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s2">&quot;testSF2d&quot;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">)</span>
+
+<span class="c1"># test structured eval</span>
+<span class="n">test_eta_jagged</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromcounts</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">)</span>
+<span class="n">test_pt_jagged</span> <span class="o">=</span> <span class="n">awkward</span><span class="o">.</span><span class="n">JaggedArray</span><span class="o">.</span><span class="n">fromcounts</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">)</span>
+<span class="n">test_out_jagged</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s2">&quot;testSF2d&quot;</span><span class="p">](</span><span class="n">test_eta_jagged</span><span class="p">,</span> <span class="n">test_pt_jagged</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JAGGED SHAPE COMPARISON&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;eta      :&#39;</span><span class="p">,</span><span class="n">test_eta_jagged</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pt     :&#39;</span><span class="p">,</span><span class="n">test_pt_jagged</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;scaling :&#39;</span><span class="p">,</span><span class="n">test_out_jagged</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;output scaling :&#39;</span><span class="p">,</span><span class="n">test_out_jagged</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;testSF2d&#39;]
+
+2 dimensional histogram with axes:
+        1: [-2.5   -2.    -1.566 -1.444 -0.8    0.     0.8    1.444  1.566  2.
+  2.5  ]
+        2: [ 10.  20.  35.  50.  90. 150. 500.]
+
+
+&lt;class &#39;coffea.lookup_tools.dense_lookup.dense_lookup&#39;&gt;
+
+JAGGED SHAPE COMPARISON
+eta      : [0 6 2 1 0 0 0 4 1 2 0 7 3 0 0 0 0 1 1 0 1 0 0 0 1 3 0 1 1 0 1 0 0 5 6 3 0
+ 0 2 1 0 1 0 4 0 2 0 1 1 0]
+pt     : [0 6 2 1 0 0 0 4 1 2 0 7 3 0 0 0 0 1 1 0 1 0 0 0 1 3 0 1 1 0 1 0 0 5 6 3 0
+ 0 2 1 0 1 0 4 0 2 0 1 1 0]
+scaling : [0 6 2 1 0 0 0 4 1 2 0 7 3 0 0 0 0 1 1 0 1 0 0 0 1 3 0 1 1 0 1 0 0 5 6 3 0
+ 0 2 1 0 1 0 4 0 2 0 1 1 0]
+output scaling : [[] [0.9078014 0.8274854 0.8633218 0.8633218 0.97981155 0.79701495] [0.88245934 0.82857144] ... [1.007752] [0.80655736] []]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Plotting-with-weights">
+<h2>Plotting with weights<a class="headerlink" href="#Plotting-with-weights" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">coffea</span> <span class="k">import</span> <span class="n">hist</span>
+
+<span class="n">weights_axis</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;wgtname&quot;</span><span class="p">,</span> <span class="s2">&quot;With/Without Weights&quot;</span><span class="p">)</span>
+<span class="n">eta_axis</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;eta&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$\eta&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">pt_axis</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$p_</span><span class="si">{T}</span><span class="s2">$ [GeV]&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">eta_hist</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Hist</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">weights_axis</span><span class="p">,</span> <span class="n">eta_axis</span><span class="p">)</span>
+<span class="n">pt_hist</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Hist</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">weights_axis</span><span class="p">,</span> <span class="n">pt_axis</span><span class="p">)</span>
+
+<span class="n">eta_hist</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">wgtname</span><span class="o">=</span><span class="s1">&#39;weights&#39;</span><span class="p">,</span><span class="n">eta</span><span class="o">=</span><span class="n">test_eta_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">weight</span><span class="o">=</span><span class="n">test_out_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">eta_hist</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">wgtname</span><span class="o">=</span><span class="s1">&#39;noweights&#39;</span><span class="p">,</span><span class="n">eta</span><span class="o">=</span><span class="n">test_eta_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+<span class="n">pt_hist</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">wgtname</span><span class="o">=</span><span class="s1">&#39;weights&#39;</span><span class="p">,</span><span class="n">pt</span><span class="o">=</span><span class="n">test_pt_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">weight</span><span class="o">=</span><span class="n">test_out_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">pt_hist</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">wgtname</span><span class="o">=</span><span class="s1">&#39;noweights&#39;</span><span class="p">,</span><span class="n">pt</span><span class="o">=</span><span class="n">test_pt_jagged</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">plot1d</span><span class="p">(</span><span class="n">eta_hist</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="s1">&#39;wgtname&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">plot1d</span><span class="p">(</span><span class="n">pt_hist</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="s1">&#39;wgtname&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/applying_corrections_9_0.png" src="_images/applying_corrections_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Importing-B-tagging-Scale-Factors">
+<h2>Importing B-tagging Scale Factors<a class="headerlink" href="#Importing-B-tagging-Scale-Factors" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+head -5 ../tests/samples/testBTagSF.btag.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CSVv2;OperatingPoint, measurementType, sysType, jetFlavor, etaMin, etaMax, ptMin, ptMax, discrMin, discrMax, formula
+0, mujets, central, 1, -2.4, 2.4, 20, 1000, 0, 1, &#34;0.884016*((1.+(0.0331508*x))/(1.+(0.0285096*x)))&#34;
+0, mujets, central, 0, -2.4, 2.4, 20, 1000, 0, 1, &#34;0.884016*((1.+(0.0331508*x))/(1.+(0.0285096*x)))&#34;
+0, mujets, down, 1, -2.4, 2.4, 20, 30, 0, 1, &#34;(0.884016*((1.+(0.0331508*x))/(1.+(0.0285096*x))))-0.063606932759284973&#34;
+0, mujets, down, 1, -2.4, 2.4, 30, 50, 0, 1, &#34;(0.884016*((1.+(0.0331508*x))/(1.+(0.0285096*x))))-0.034989029169082642&#34;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span><span class="s2">&quot;testBTag * ../tests/samples/testBTagSF.btag.csv&quot;</span><span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;testBTagCSVv2_1_comb_up_0&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;testBTagCSVv2_1_comb_up_0&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span> <span class="o">=</span> <span class="n">dummy_jagged_eta_pt</span><span class="p">()</span>
+<span class="c1"># discriminant used for reshaping, zero otherwise</span>
+<span class="n">test_discr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">test_eta</span><span class="p">)</span>
+
+<span class="n">sf_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;testBTagCSVv2_1_comb_up_0&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">,</span> <span class="n">test_discr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sf_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;testBTagCSVv2_0_comb_central_0&#39;, &#39;testBTagCSVv2_0_comb_central_1&#39;, &#39;testBTagCSVv2_0_comb_down_0&#39;, &#39;testBTagCSVv2_0_comb_down_1&#39;, &#39;testBTagCSVv2_0_comb_up_0&#39;, &#39;testBTagCSVv2_0_comb_up_1&#39;, &#39;testBTagCSVv2_0_incl_central_2&#39;, &#39;testBTagCSVv2_0_incl_down_2&#39;, &#39;testBTagCSVv2_0_incl_down_correlated_2&#39;, &#39;testBTagCSVv2_0_incl_down_uncorrelated_2&#39;, &#39;testBTagCSVv2_0_incl_up_2&#39;, &#39;testBTagCSVv2_0_incl_up_correlated_2&#39;, &#39;testBTagCSVv2_0_incl_up_uncorrelated_2&#39;, &#39;testBTagCSVv2_0_mujets_central_0&#39;, &#39;testBTagCSVv2_0_mujets_central_1&#39;, &#39;testBTagCSVv2_0_mujets_down_0&#39;, &#39;testBTagCSVv2_0_mujets_down_1&#39;, &#39;testBTagCSVv2_0_mujets_up_0&#39;, &#39;testBTagCSVv2_0_mujets_up_1&#39;, &#39;testBTagCSVv2_1_comb_central_0&#39;, &#39;testBTagCSVv2_1_comb_central_1&#39;, &#39;testBTagCSVv2_1_comb_down_0&#39;, &#39;testBTagCSVv2_1_comb_down_1&#39;, &#39;testBTagCSVv2_1_comb_up_0&#39;, &#39;testBTagCSVv2_1_comb_up_1&#39;, &#39;testBTagCSVv2_1_incl_central_2&#39;, &#39;testBTagCSVv2_1_incl_down_2&#39;, &#39;testBTagCSVv2_1_incl_down_correlated_2&#39;, &#39;testBTagCSVv2_1_incl_down_uncorrelated_2&#39;, &#39;testBTagCSVv2_1_incl_up_2&#39;, &#39;testBTagCSVv2_1_incl_up_correlated_2&#39;, &#39;testBTagCSVv2_1_incl_up_uncorrelated_2&#39;, &#39;testBTagCSVv2_1_mujets_central_0&#39;, &#39;testBTagCSVv2_1_mujets_central_1&#39;, &#39;testBTagCSVv2_1_mujets_down_0&#39;, &#39;testBTagCSVv2_1_mujets_down_1&#39;, &#39;testBTagCSVv2_1_mujets_up_0&#39;, &#39;testBTagCSVv2_1_mujets_up_1&#39;, &#39;testBTagCSVv2_2_comb_central_0&#39;, &#39;testBTagCSVv2_2_comb_central_1&#39;, &#39;testBTagCSVv2_2_comb_down_0&#39;, &#39;testBTagCSVv2_2_comb_down_1&#39;, &#39;testBTagCSVv2_2_comb_up_0&#39;, &#39;testBTagCSVv2_2_comb_up_1&#39;, &#39;testBTagCSVv2_2_incl_central_2&#39;, &#39;testBTagCSVv2_2_incl_down_2&#39;, &#39;testBTagCSVv2_2_incl_down_correlated_2&#39;, &#39;testBTagCSVv2_2_incl_down_uncorrelated_2&#39;, &#39;testBTagCSVv2_2_incl_up_2&#39;, &#39;testBTagCSVv2_2_incl_up_correlated_2&#39;, &#39;testBTagCSVv2_2_incl_up_uncorrelated_2&#39;, &#39;testBTagCSVv2_2_mujets_central_0&#39;, &#39;testBTagCSVv2_2_mujets_central_1&#39;, &#39;testBTagCSVv2_2_mujets_down_0&#39;, &#39;testBTagCSVv2_2_mujets_down_1&#39;, &#39;testBTagCSVv2_2_mujets_up_0&#39;, &#39;testBTagCSVv2_2_mujets_up_1&#39;, &#39;testBTagCSVv2_3_iterativefit_central_0&#39;, &#39;testBTagCSVv2_3_iterativefit_central_1&#39;, &#39;testBTagCSVv2_3_iterativefit_central_2&#39;, &#39;testBTagCSVv2_3_iterativefit_down_cferr1_1&#39;, &#39;testBTagCSVv2_3_iterativefit_down_cferr2_1&#39;, &#39;testBTagCSVv2_3_iterativefit_down_hf_2&#39;, &#39;testBTagCSVv2_3_iterativefit_down_hfstats1_0&#39;, &#39;testBTagCSVv2_3_iterativefit_down_hfstats2_0&#39;, &#39;testBTagCSVv2_3_iterativefit_down_jes_0&#39;, &#39;testBTagCSVv2_3_iterativefit_down_jes_2&#39;, &#39;testBTagCSVv2_3_iterativefit_down_lf_0&#39;, &#39;testBTagCSVv2_3_iterativefit_down_lfstats1_2&#39;, &#39;testBTagCSVv2_3_iterativefit_down_lfstats2_2&#39;, &#39;testBTagCSVv2_3_iterativefit_up_cferr1_1&#39;, &#39;testBTagCSVv2_3_iterativefit_up_cferr2_1&#39;, &#39;testBTagCSVv2_3_iterativefit_up_hf_2&#39;, &#39;testBTagCSVv2_3_iterativefit_up_hfstats1_0&#39;, &#39;testBTagCSVv2_3_iterativefit_up_hfstats2_0&#39;, &#39;testBTagCSVv2_3_iterativefit_up_jes_0&#39;, &#39;testBTagCSVv2_3_iterativefit_up_jes_2&#39;, &#39;testBTagCSVv2_3_iterativefit_up_lf_0&#39;, &#39;testBTagCSVv2_3_iterativefit_up_lfstats1_2&#39;, &#39;testBTagCSVv2_3_iterativefit_up_lfstats2_2&#39;]
+
+3 dimensional histogram with axes:
+        1: [-2.4  2.4]
+        2: [  20.   30.   50.   70.  100.  140.  200.  300.  600. 1000.]
+        3: [0. 1.]
+
+
+&lt;class &#39;coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup&#39;&gt;
+
+[0.95128731 0.93342262 0.94581584 0.9562116  0.95935615 0.76909779
+ 0.95884026 0.86764134 0.95776757 0.95909891 0.83883375 0.89613238
+ 0.93807178 0.90847214 0.95407025 0.94804662 0.66976326 0.96614842
+ 0.96327249 0.90059409 0.81412774 0.86120881 0.95694991 0.95922917
+ 0.96462036 0.96067892 0.91540286 0.95080672 0.94797061 0.95715703
+ 0.92310346 0.77273281 0.79229824 0.89050454 0.87318197 0.86511678
+ 0.86207827 0.91682646 0.94775882 0.81131347 0.91070577 0.87291695
+ 0.96171664 0.92458442 0.9453665  0.94590596 0.90687939 0.94466831
+ 0.81711253 0.91420082 0.90475525 0.88336832 0.9515002  0.94970475
+ 0.95800175 0.8967923  0.92337392 0.92165616 0.93935211 0.84100789
+ 0.87202563 0.91877036]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Importing-JSON-encoded-histograms">
+<h2>Importing JSON-encoded histograms<a class="headerlink" href="#Importing-JSON-encoded-histograms" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+head -10 ../tests/samples/EIDISO_WH_out.histo.json
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{
+        &#34;EIDISO_WH&#34; : {
+                &#34;eta_pt_ratio&#34; : {
+                        &#34;eta:[ 0.00, 0.80]&#34;:{
+                                &#34;pt:[25.00,27.00]&#34;:{
+                                        &#34;value&#34;:0.903,
+                                        &#34;error&#34;:0.051
+                                },
+                                &#34;pt:[27.00,30.00]&#34;:{
+                                        &#34;value&#34;:0.921,
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span><span class="s2">&quot;* * ../tests/samples/EIDISO_WH_out.histo.json&quot;</span><span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;EIDISO_WH/eta_pt_ratio_value&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;EIDISO_WH/eta_pt_ratio_value&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span> <span class="o">=</span> <span class="n">dummy_jagged_eta_pt</span><span class="p">()</span>
+
+<span class="n">sf_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;EIDISO_WH/eta_pt_ratio_value&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">)</span>
+<span class="n">sf_err_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;EIDISO_WH/eta_pt_ratio_error&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sf_out</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sf_err_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;EIDISO_WH/eta_pt_ratio_error&#39;, &#39;EIDISO_WH/eta_pt_ratio_value&#39;]
+
+2 dimensional histogram with axes:
+        1: [-2.5  -2.17 -1.8  -1.57 -1.44 -0.8   0.    0.8   1.44  1.57  1.8   2.17
+  2.5 ]
+        2: [ 25.  27.  30.  32.  35.  40.  50. 200.]
+
+
+&lt;class &#39;coffea.lookup_tools.dense_lookup.dense_lookup&#39;&gt;
+
+[0.771 0.83  0.709 0.709 0.935 0.709 0.788 0.771 0.828 0.904 0.862 0.851
+ 0.791 0.851 0.851 0.903 0.771 0.793 0.774 0.709 0.83  0.771 0.828 0.791
+ 0.886 0.886 0.83  0.791 0.889 0.788 0.709 0.903 0.851 0.788 0.851 0.851
+ 0.867 0.867 0.748 0.862 0.788 0.867 0.    0.903 0.83  0.889 0.903 0.862
+ 0.788 0.788 0.788 0.867 0.893 0.903 0.709 0.    0.862 0.    0.836 0.788
+ 0.851 0.771]
+[0.029 0.035 0.186 0.186 0.009 0.186 0.186 0.027 0.024 0.008 0.051 0.078
+ 0.027 0.078 0.078 0.051 0.027 0.061 0.036 0.186 0.035 0.027 0.024 0.027
+ 0.04  0.04  0.035 0.029 0.027 0.186 0.186 0.051 0.078 0.186 0.078 0.078
+ 0.078 0.078 0.104 0.051 0.186 0.078 0.    0.051 0.035 0.021 0.051 0.051
+ 0.186 0.186 0.186 0.078 0.029 0.051 0.186 0.    0.051 0.    0.035 0.186
+ 0.078 0.027]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Import-Jet-Energy-Scales-and-Uncertainties">
+<h2>Import Jet Energy Scales and Uncertainties<a class="headerlink" href="#Import-Jet-Energy-Scales-and-Uncertainties" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+head -5 ../tests/samples/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi.jec.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{2 JetEta JetPt 1 JetPt max(0.0001,[0]+((x-[1])*([2]+((x-[1])*([3]+((x-[1])*[4])))))) Correction L2Relative}
+  -5.191  -4.889     0.001   8.95328     7           8   8.9532766      2.638647259      7.816547526   -0.08418211224   -0.04894120539    0.03974185455
+  -5.191  -4.889   8.95328   10.4135     7   8.9532766   10.413492      2.538089424      8.953276588   -0.04139022814    0.03931172893   -0.02027504013
+  -5.191  -4.889   10.4135   12.1083     7   10.413492   12.108301      2.498345769        10.413492   -0.05627613174   -0.01124129111    0.00462608126
+  -5.191  -4.889   12.1083   14.3796     7   12.108301   14.379634      2.393199605      12.10830116   -0.05451625473 -0.0004401913391   0.001090215218
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span>
+    <span class="s2">&quot;* * ../tests/samples/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi.jec.txt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;* * ../tests/samples/Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi.junc.txt&quot;</span><span class="p">,</span>
+<span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">test_eta</span><span class="p">,</span> <span class="n">test_pt</span> <span class="o">=</span> <span class="n">dummy_jagged_eta_pt</span><span class="p">()</span>
+
+<span class="n">jec_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span><span class="n">test_pt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">jec_out</span><span class="p">)</span>
+
+<span class="n">junc_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span><span class="n">test_pt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">junc_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;, &#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;]
+
+binned dims: [&#39;JetEta&#39;, &#39;JetPt&#39;]
+eval vars  : [&#39;JetPt&#39;]
+parameters : [&#39;p0&#39;, &#39;p1&#39;, &#39;p2&#39;, &#39;p3&#39;, &#39;p4&#39;]
+formula    : max(0.0001,p0+((JetPt-p1)*(p2+((JetPt-p1)*(p3+((JetPt-p1)*p4))))))
+signature  : (JetEta,JetPt)
+
+
+binned dims   : [&#39;JetEta&#39;]
+eval vars     : [&#39;JetPt&#39;]
+signature     : (JetEta,JetPt)
+
+
+&lt;class &#39;coffea.lookup_tools.jme_standard_function.jme_standard_function&#39;&gt;
+
+&lt;class &#39;coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup&#39;&gt;
+
+[1.45057193e+00 1.25585204e+00 1.64232333e+00 1.44857384e+00
+ 1.10674860e+00 5.51830446e+01 1.43976124e+00 1.32015858e+00
+ 1.40034850e+00 1.14325794e+00 1.16132973e+00 1.23727560e+00
+ 1.37769766e+00 1.16260351e+00 1.22867873e+00 1.11476187e+00
+ 1.00000000e-04 1.30881909e+00 1.49573656e+00 2.08331161e+00
+ 1.11580486e+00 1.31960025e+00 1.50752870e+00 1.33073814e+00
+ 1.20708889e+00 1.22506240e+00 1.26504714e+00 1.38301056e+00
+ 1.13100769e+00 1.41293290e+00 1.50744071e+00 1.00000000e-04
+ 1.13762966e+00 1.94032953e+00 1.22413629e+00 1.20099728e+00
+ 1.23660312e+00 1.15130767e+00 1.36517306e+00 2.15859176e+00
+ 1.49190352e+00 1.24133590e+00 1.21707778e+00 1.13372533e+00
+ 1.25746869e+00 1.10787047e+00 1.14147547e+00 1.12870077e+00
+ 3.99601852e+00 1.59488828e+00 2.09308520e+00 1.17529515e+00
+ 1.14655837e+00 1.11473851e+00 1.44155395e+00 1.23518610e+00
+ 1.14067907e+00 1.24435685e+00 1.25680743e+00 4.72142338e+00
+ 1.25002771e+00 1.37279862e+00]
+[[1.11915907 0.88084093]
+ [1.02700341 0.97299659]
+ [1.13520128 0.86479872]
+ [1.03966528 0.96033472]
+ [1.0150645  0.9849355 ]
+ [1.1499     0.8501    ]
+ [1.07996061 0.92003939]
+ [1.0412     0.9588    ]
+ [1.12455323 0.87544677]
+ [1.0147727  0.9852273 ]
+ [1.0551     0.9449    ]
+ [1.04383006 0.95616994]
+ [1.03226187 0.96773813]
+ [1.04098171 0.95901829]
+ [1.02345675 0.97654325]
+ [1.02371956 0.97628044]
+ [1.0408     0.9592    ]
+ [1.02851    0.97149   ]
+ [1.07772071 0.92227929]
+ [1.16931609 0.83068391]
+ [1.044      0.956     ]
+ [1.0412     0.9588    ]
+ [1.1154504  0.8845496 ]
+ [1.02883552 0.97116448]
+ [1.0219841  0.9780159 ]
+ [1.02258514 0.97741486]
+ [1.03130382 0.96869618]
+ [1.06918131 0.93081869]
+ [1.01856829 0.98143171]
+ [1.03454189 0.96545811]
+ [1.04637015 0.95362985]
+ [1.0549     0.9451    ]
+ [1.0562     0.9438    ]
+ [1.18030632 0.81969368]
+ [1.05444569 0.94555431]
+ [1.0562     0.9438    ]
+ [1.0549     0.9451    ]
+ [1.03870278 0.96129722]
+ [1.03294431 0.96705569]
+ [1.0551     0.9449    ]
+ [1.04763247 0.95236753]
+ [1.05349938 0.94650062]
+ [1.01553045 0.98446955]
+ [1.03171128 0.96828872]
+ [1.02443119 0.97556881]
+ [1.01980699 0.98019301]
+ [1.04002754 0.95997246]
+ [1.02474354 0.97525646]
+ [1.2154     0.7846    ]
+ [1.04711972 0.95288028]
+ [1.17204418 0.82795582]
+ [1.0533695  0.9466305 ]
+ [1.01691896 0.98308104]
+ [1.02463635 0.97536365]
+ [1.08025526 0.91974474]
+ [1.03986056 0.96013944]
+ [1.03193999 0.96806001]
+ [1.03222089 0.96777911]
+ [1.02577794 0.97422206]
+ [1.1517     0.8483    ]
+ [1.05178494 0.94821506]
+ [1.04198569 0.95801431]]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+head -4 ../tests/samples/Autumn18_V8_MC_UncertaintySources_AK4PFchs.junc.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+#Uncertainty sources for Autumn18_V5_DATA_AK4PFchs
+[AbsoluteStat]
+{1 JetEta 1 JetPt &#34;&#34; Correction JECSource}
+-5.4 -5.0 150 9.0 0.0037 0.0037 11.0 0.0035 0.0035 13.5 0.0033 0.0033 16.5 0.0031 0.0031 19.5 0.0030 0.0030 22.5 0.0029 0.0029 26.0 0.0028 0.0028 30.0 0.0027 0.0027 34.5 0.0027 0.0027 40.0 0.0026 0.0026 46.0 0.0025 0.0025 52.5 0.0025 0.0025 60.0 0.0025 0.0025 69.0 0.0024 0.0024 79.0 0.0024 0.0024 90.5 0.0024 0.0024 105.5 0.0024 0.0024 123.5 0.0024 0.0024 143.0 0.0025 0.0025 163.5 0.0025 0.0025 185.0 0.0025 0.0025 208.0 0.0025 0.0025 232.5 0.0025 0.0025 258.5 0.0026 0.0026 286.0 0.0026 0.0026 331.0 0.0027 0.0027 396.0 0.0027 0.0027 468.5 0.0028 0.0028 549.5 0.0028 0.0028 639.0 0.0029 0.0029 738.0 0.0029 0.0029 847.5 0.0030 0.0030 968.5 0.0031 0.0031 1102.0 0.0031 0.0031 1249.5 0.0032 0.0032 1412.0 0.0032 0.0032 1590.5 0.0033 0.0033 1787.0 0.0033 0.0033 2003.0 0.0034 0.0034 2241.0 0.0034 0.0034 2503.0 0.0035 0.0035 2790.5 0.0035 0.0035 3107.0 0.0035 0.0035 3455.0 0.0036 0.0036 3837.0 0.0036 0.0036 4257.0 0.0037 0.0037 4719.0 0.0037 0.0037 5226.5 0.0038 0.0038 5784.0 0.0038 0.0038 6538.0 0.0038 0.0038
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span>
+    <span class="s2">&quot;* * ../tests/samples/Autumn18_V8_MC_UncertaintySources_AK4PFchs.junc.txt&quot;</span><span class="p">,</span>
+<span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteScale&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteScale&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">bysource_junc_out</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">[</span><span class="s1">&#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteScale&#39;</span><span class="p">](</span><span class="n">test_eta</span><span class="p">,</span><span class="n">test_pt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bysource_junc_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteFlavMap&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteMPFBias&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteSample&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteScale&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_AbsoluteStat&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_CorrelationGroupFlavor&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_CorrelationGroupIntercalibration&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_CorrelationGroupMPFInSitu&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_CorrelationGroupUncorrelated&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_CorrelationGroupbJES&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorPhotonJet&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorPureBottom&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorPureCharm&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorPureGluon&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorPureQuark&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorQCD&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_FlavorZJet&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_Fragmentation&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpDataMC&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpEnvelope&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpMuZero&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpPtBB&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpPtEC1&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpPtEC2&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpPtHF&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_PileUpPtRef&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeBal&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeFSR&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeJEREC1&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeJEREC2&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeJERHF&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativePtBB&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativePtEC1&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativePtEC2&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativePtHF&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeSample&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeStatEC&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeStatFSR&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_RelativeStatHF&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SinglePionECAL&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SinglePionHCAL&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalAbsolute&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalMC&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalPileUp&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalPt&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalRelative&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_SubTotalScale&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_TimePtEta&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_Total&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_TotalNoFlavor&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_TotalNoFlavorNoTime&#39;, &#39;Autumn18_V8_MC_UncertaintySources_AK4PFchs_TotalNoTime&#39;]
+
+binned dims   : [&#39;JetEta&#39;]
+eval vars     : [&#39;JetPt&#39;]
+signature     : (JetEta,JetPt)
+
+
+&lt;class &#39;coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup&#39;&gt;
+
+[[1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]
+ [1.001 0.999]]
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Applying-energy-scale-transformations-to-Jets">
+<h2>Applying energy scale transformations to Jets<a class="headerlink" href="#Applying-energy-scale-transformations-to-Jets" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">coffea.analysis_objects</span> <span class="k">import</span> <span class="n">JaggedCandidateArray</span> <span class="k">as</span> <span class="n">CandArray</span>
+<span class="kn">from</span> <span class="nn">coffea.jetmet_tools</span> <span class="k">import</span> <span class="n">FactorizedJetCorrector</span><span class="p">,</span><span class="n">JetCorrectionUncertainty</span>
+<span class="kn">from</span> <span class="nn">coffea.jetmet_tools</span> <span class="k">import</span> <span class="n">JetTransformer</span>
+
+<span class="n">ext</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">()</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">add_weight_sets</span><span class="p">([</span>
+    <span class="s2">&quot;* * ../tests/samples/Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi.jec.txt&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;* * ../tests/samples/Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi.junc.txt&quot;</span><span class="p">,</span>
+<span class="p">])</span>
+<span class="n">ext</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">ext</span><span class="o">.</span><span class="n">make_evaluator</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">evaluator</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">counts</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">,</span> <span class="n">pz</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="n">dummy_four_momenta</span><span class="p">()</span>
+
+<span class="n">jets</span> <span class="o">=</span> <span class="n">CandArray</span><span class="o">.</span><span class="n">candidatesfromcounts</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span><span class="n">px</span><span class="o">=</span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="o">=</span><span class="n">py</span><span class="p">,</span><span class="n">pz</span><span class="o">=</span><span class="n">pz</span><span class="p">,</span><span class="n">energy</span><span class="o">=</span><span class="n">E</span><span class="p">)</span>
+<span class="n">jets</span><span class="o">.</span><span class="n">add_attributes</span><span class="p">(</span><span class="n">ptRaw</span><span class="o">=</span><span class="n">jets</span><span class="o">.</span><span class="n">pt</span><span class="p">,</span>
+                    <span class="n">massRaw</span><span class="o">=</span><span class="n">jets</span><span class="o">.</span><span class="n">mass</span><span class="p">)</span>
+
+<span class="n">jec_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;</span><span class="p">]</span>
+<span class="n">junc_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;</span><span class="p">]</span>
+<span class="n">corrector</span> <span class="o">=</span> <span class="n">FactorizedJetCorrector</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">evaluator</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">jec_names</span><span class="p">})</span>
+<span class="n">uncertainties</span> <span class="o">=</span> <span class="n">JetCorrectionUncertainty</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="n">evaluator</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">junc_names</span><span class="p">})</span>
+
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">JetTransformer</span><span class="p">(</span><span class="n">jec</span><span class="o">=</span><span class="n">corrector</span><span class="p">,</span><span class="n">junc</span><span class="o">=</span><span class="n">uncertainties</span><span class="p">)</span>
+<span class="c1">### more possibilities are available if you send in more pieces of the JEC stack</span>
+<span class="c1"># mc2016_ak8_jxform = JetTransformer(jec=MC_AK8JEC2016,junc=MC_AK8JUNC2016</span>
+<span class="c1">#                                    jer=MC_AK8JER2016,jersf=MC_AK8JERSF2016)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;starting columns:&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;untransformed pt ratios&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">pt</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">ptRaw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;untransformed mass ratios&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">mass</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">massRaw</span><span class="p">)</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">jets</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;transformed pt ratios&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">pt</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">ptRaw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;transformed mass ratios&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">mass</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">massRaw</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;transformed columns:&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JES UP pt ratio&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">pt_AK4PFPuppi_up</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">ptRaw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JET DOWN pt ratio&#39;</span><span class="p">,</span><span class="n">jets</span><span class="o">.</span><span class="n">pt_AK4PFPuppi_down</span><span class="o">/</span><span class="n">jets</span><span class="o">.</span><span class="n">ptRaw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Fall17_17Nov2017_V32_MC_L2Relative_AK4PFPuppi&#39;, &#39;Fall17_17Nov2017_V32_MC_Uncertainty_AK4PFPuppi&#39;]
+
+
+starting columns: [&#39;p4&#39;, &#39;__fast_pt&#39;, &#39;__fast_eta&#39;, &#39;__fast_phi&#39;, &#39;__fast_mass&#39;, &#39;ptRaw&#39;, &#39;massRaw&#39;]
+
+untransformed pt ratios [[1.0] [] [] ... [] [] []]
+untransformed mass ratios [[1.0] [] [] ... [] [] []]
+transformed pt ratios [[1.1272528072650656] [] [] ... [] [] []]
+transformed mass ratios [[1.1272528072650656] [] [] ... [] [] []]
+
+transformed columns: [&#39;p4&#39;, &#39;__fast_pt&#39;, &#39;__fast_eta&#39;, &#39;__fast_phi&#39;, &#39;__fast_mass&#39;, &#39;ptRaw&#39;, &#39;massRaw&#39;, &#39;pt_AK4PFPuppi_up&#39;, &#39;mass_AK4PFPuppi_up&#39;, &#39;pt_AK4PFPuppi_down&#39;, &#39;mass_AK4PFPuppi_down&#39;]
+
+JES UP pt ratio [[1.14899510679127] [] [] ... [] [] []]
+JET DOWN pt ratio [[1.105510507738861] [] [] ... [] [] []]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="muonspectrum_v4.html" class="btn btn-neutral float-right" title="Four Muon Spectrum" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plotting-demo.html" class="btn btn-neutral float-left" title="Coffea Plotting Demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fermi National Accelerator Laboratory
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

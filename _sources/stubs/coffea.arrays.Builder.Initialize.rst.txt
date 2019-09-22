@@ -1,0 +1,6 @@
+coffea.arrays.Builder.Initialize
+================================
+
+.. currentmodule:: coffea.arrays.Builder
+
+.. autofunction:: Initialize

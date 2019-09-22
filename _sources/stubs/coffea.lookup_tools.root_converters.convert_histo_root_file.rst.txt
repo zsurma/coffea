@@ -1,0 +1,6 @@
+coffea.lookup\_tools.root\_converters.convert\_histo\_root\_file
+================================================================
+
+.. currentmodule:: coffea.lookup_tools.root_converters
+
+.. autofunction:: convert_histo_root_file

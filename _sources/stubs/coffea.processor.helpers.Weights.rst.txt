@@ -1,0 +1,31 @@
+coffea.processor.helpers.Weights
+================================
+
+.. currentmodule:: coffea.processor.helpers
+
+.. autoclass:: Weights
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Weights.__init__
+      ~Weights.add
+      ~Weights.partial_weight
+      ~Weights.weight
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Weights.variations
+   
+   

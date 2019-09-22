@@ -1,0 +1,29 @@
+coffea.hist.hist\_tools.StringBin
+=================================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: StringBin
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StringBin.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StringBin.label
+      ~StringBin.name
+   
+   

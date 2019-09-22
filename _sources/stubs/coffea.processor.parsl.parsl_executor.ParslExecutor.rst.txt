@@ -1,0 +1,28 @@
+coffea.processor.parsl.parsl\_executor.ParslExecutor
+====================================================
+
+.. currentmodule:: coffea.processor.parsl.parsl_executor
+
+.. autoclass:: ParslExecutor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ParslExecutor.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ParslExecutor.counts
+   
+   

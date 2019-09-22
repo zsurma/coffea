@@ -1,0 +1,29 @@
+coffea.jetmet\_tools.JetTransformer.JetTransformer
+==================================================
+
+.. currentmodule:: coffea.jetmet_tools.JetTransformer
+
+.. autoclass:: JetTransformer
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~JetTransformer.__init__
+      ~JetTransformer.transform
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~JetTransformer.uncertainties
+   
+   

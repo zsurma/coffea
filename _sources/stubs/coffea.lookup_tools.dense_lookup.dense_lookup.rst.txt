@@ -1,0 +1,22 @@
+coffea.lookup\_tools.dense\_lookup.dense\_lookup
+================================================
+
+.. currentmodule:: coffea.lookup_tools.dense_lookup
+
+.. autoclass:: dense_lookup
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~dense_lookup.__init__
+   
+   
+
+   
+   
+   

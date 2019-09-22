@@ -1,0 +1,35 @@
+coffea.hist.hist\_tools.Bin
+===========================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: Bin
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Bin.__init__
+      ~Bin.centers
+      ~Bin.edges
+      ~Bin.identifiers
+      ~Bin.index
+      ~Bin.reduced
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Bin.label
+      ~Bin.name
+      ~Bin.size
+   
+   

@@ -1,0 +1,1057 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Coffea Histograms &mdash; coffea 0.6.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coffea Plotting Demo" href="plotting-demo.html" />
+    <link rel="prev" title="Coffea by Example" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> coffea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="introduction.html">Coffea by Example</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coffea Histograms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Filling">Filling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Transformation">Transformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Plotting">Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plotting-demo.html">Coffea Plotting Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="applying_corrections.html">Applying corrections to columnar data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="muonspectrum_v4.html">Four Muon Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">coffea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="introduction.html">Coffea by Example</a> &raquo;</li>
+        
+      <li>Coffea Histograms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/histograms.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Coffea-Histograms">
+<h1>Coffea Histograms<a class="headerlink" href="#Coffea-Histograms" title="Permalink to this headline">¶</a></h1>
+<p>In scientific python, histograms seem to be considered as a plot style, on equal footing with, e.g. scatter plots. It may well be that HEP is the only place where users need to plot <em>pre-binned</em> data, and thus must use histograms as persistent objects representing reduced data. This notebook will discuss a few ways that such objects can be manipulated.</p>
+<p>A histogram object roughly goes through three stages in its life: - Filling - Transformation (projection, rebinning, integrating) - Plotting</p>
+<div class="section" id="Filling">
+<h2>Filling<a class="headerlink" href="#Filling" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with filling. We’ll use a random distribution <a class="reference external" href="https://en.wikipedia.org/wiki/ARGUS_distribution">near and dear</a> to of b and c factory physicists.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">argus</span>
+
+<span class="n">vals</span> <span class="o">=</span> <span class="n">argus</span><span class="p">(</span><span class="n">chi</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">hist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([ 17,  46,  76,  87, 110, 135, 160, 156, 134,  79]), array([0.00720392, 0.10567723, 0.20415053, 0.30262384, 0.40109715,
+       0.49957046, 0.59804377, 0.69651707, 0.79499038, 0.89346369,
+       0.991937  ]))
+</pre></div></div>
+</div>
+<p>So we’re done, right? Probably not: we have more than 1000 events, and probably need to use some map-reduce paradigm to fill the histogram because we can’t keep all 1 billion <code class="docutils literal notranslate"><span class="pre">vals</span></code> in memory. So we need two things: a binning, so that all histograms that were independently created can be added, and the ability to add two histograms.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">binning</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">add_histos</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">h2</span><span class="p">):</span>
+    <span class="n">h1sumw</span><span class="p">,</span> <span class="n">h1binning</span> <span class="o">=</span> <span class="n">h1</span>
+    <span class="n">h2sumw</span><span class="p">,</span> <span class="n">h2binning</span> <span class="o">=</span> <span class="n">h2</span>
+    <span class="k">if</span> <span class="n">h1binning</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">h2binning</span><span class="o">.</span><span class="n">shape</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">h1binning</span><span class="o">==</span><span class="n">h2binning</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">h1sumw</span><span class="o">+</span><span class="n">h2sumw</span><span class="p">,</span> <span class="n">h1binning</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The histograms have inconsistent binning&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vals2</span> <span class="o">=</span> <span class="n">argus</span><span class="p">(</span><span class="n">chi</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">hist1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
+<span class="n">hist2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
+
+<span class="n">hist</span> <span class="o">=</span> <span class="n">add_histos</span><span class="p">(</span><span class="n">hist1</span><span class="p">,</span> <span class="n">hist2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([ 6,  4,  2,  4, 16, 10, 14, 22, 30, 18, 18, 32, 32, 32, 42, 26, 34,
+       40, 44, 32, 38, 44, 52, 62, 54, 54, 48, 60, 42, 76, 62, 78, 72, 54,
+       62, 48, 64, 90, 58, 62, 44, 58, 58, 54, 58, 38, 20, 22, 10]), array([0.        , 0.02040816, 0.04081633, 0.06122449, 0.08163265,
+       0.10204082, 0.12244898, 0.14285714, 0.16326531, 0.18367347,
+       0.20408163, 0.2244898 , 0.24489796, 0.26530612, 0.28571429,
+       0.30612245, 0.32653061, 0.34693878, 0.36734694, 0.3877551 ,
+       0.40816327, 0.42857143, 0.44897959, 0.46938776, 0.48979592,
+       0.51020408, 0.53061224, 0.55102041, 0.57142857, 0.59183673,
+       0.6122449 , 0.63265306, 0.65306122, 0.67346939, 0.69387755,
+       0.71428571, 0.73469388, 0.75510204, 0.7755102 , 0.79591837,
+       0.81632653, 0.83673469, 0.85714286, 0.87755102, 0.89795918,
+       0.91836735, 0.93877551, 0.95918367, 0.97959184, 1.        ]))
+</pre></div></div>
+</div>
+<p>So now we have everything we need to make our own TH1, from a filling perspective.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">class</span> <span class="nc">myTH1</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binning</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_binning</span> <span class="o">=</span> <span class="n">binning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sumw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">binning</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">sumw</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_binning</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sumw</span> <span class="o">+=</span> <span class="n">sumw</span>
+
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">myTH1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_binning</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_binning</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The histograms have inconsistent binning&quot;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">myTH1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_binning</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">_sumw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sumw</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_sumw</span>
+        <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">binning</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">h1</span> <span class="o">=</span> <span class="n">myTH1</span><span class="p">(</span><span class="n">binning</span><span class="p">)</span>
+<span class="n">h1</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span>
+
+<span class="n">h2</span> <span class="o">=</span> <span class="n">myTH1</span><span class="p">(</span><span class="n">binning</span><span class="p">)</span>
+<span class="n">h2</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">vals2</span><span class="p">)</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">h2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">_sumw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ 5.  4.  8. 12. 13. 18. 14. 20. 26. 19. 17. 29. 23. 39. 37. 36. 42. 43.
+ 43. 34. 34. 45. 50. 52. 49. 53. 62. 62. 50. 62. 59. 72. 72. 56. 61. 46.
+ 61. 77. 52. 63. 54. 56. 50. 59. 50. 39. 25. 35. 12.]
+</pre></div></div>
+</div>
+<p>Homework: add <code class="docutils literal notranslate"><span class="pre">sumw2</span></code> support.</p>
+<p>Of course, we might want multidimensional histograms. There is <code class="docutils literal notranslate"><span class="pre">np.histogramdd</span></code>:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">xbins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">ybins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">zbins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">hnumpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogramdd</span><span class="p">(</span><span class="n">xyz</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">xbins</span><span class="p">,</span> <span class="n">ybins</span><span class="p">,</span> <span class="n">zbins</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>but we are becoming challenged by book-keeping of the variables. The histogram utility in Coffea is designed to simplify this operation, and the eventual successor (for filling purposes) <a class="reference external" href="https://github.com/scikit-hep/boost-histogram#usage">boost-histogram</a> has similar syntax.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">coffea.hist</span> <span class="k">as</span> <span class="nn">hist</span>
+
+<span class="n">hfcat</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">Hist</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span>
+                  <span class="n">hist</span><span class="o">.</span><span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;sample name&quot;</span><span class="p">),</span>
+                  <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;x value&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                  <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;y value&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                  <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="s2">&quot;z value&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                 <span class="p">)</span>
+
+<span class="n">hfcat</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="s2">&quot;sample 1&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xyz</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">xyz</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="n">xyz</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># suppose we have another sample of xyz values</span>
+<span class="n">xyz_sample2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="c1"># additionally, lets assume entries in sample 2 have weight equal to atan(distance from origin)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">xyz_sample2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+
+<span class="c1"># weight is a reserved keyword in Hist</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">sample</span><span class="o">=</span><span class="s2">&quot;sample 2&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xyz_sample2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">xyz_sample2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">z</span><span class="o">=</span><span class="n">xyz_sample2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hfcat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Hist (sample,x,y,z) instance at 0x1234f11d0&gt;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># For more details, look at:</span>
+<span class="c1"># help(hist.Hist)</span>
+<span class="c1"># help(hist.Bin)</span>
+<span class="c1"># help(hist.Cat)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Transformation">
+<h2>Transformation<a class="headerlink" href="#Transformation" title="Permalink to this headline">¶</a></h2>
+<p>Here are a few examples of transformations on multidimensional histograms in Coffea. For each, the docstring (<code class="docutils literal notranslate"><span class="pre">help(function)</span></code> or shift+tab in Jupyter) provides useful info.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># sum all x bins within nominal range (-10, 10)</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">overflow</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;Hist (sample,y,z) instance at 0x1083e92e8&gt;
+</pre></div>
+</div>
+</div>
+<p>There is some analog to fancy array slicing for histogram objects, which is supported (with reasonable consistency) in Coffea, where the slice boundaries are physical axis values, rather than bin indices. All values outside the slice range are merged into overflow bins.</p>
+<p>For a lengthy discussion on possible slicing syntax for the future, see <a class="reference external" href="https://github.com/scikit-hep/boost-histogram/issues/35">boost-histogram#35</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sliced</span> <span class="o">=</span> <span class="n">hfcat</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:,</span><span class="mi">4</span><span class="p">:,</span><span class="mi">0</span><span class="p">:]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sliced</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sliced</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">overflow</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;Hist (sample,x,y,z) instance at 0x11e6d5a90&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;Interval ((-inf, 4)) instance at 0x11e6d5c18&gt;,
+ &lt;Interval ([4, 5)) instance at 0x11e6d5fd0&gt;,
+ &lt;Interval ([5, 6)) instance at 0x11e6ce710&gt;,
+ &lt;Interval ([6, 7)) instance at 0x11e6ce6a0&gt;,
+ &lt;Interval ([7, 8)) instance at 0x11e6ce978&gt;,
+ &lt;Interval ([8, 9)) instance at 0x11e6cebe0&gt;,
+ &lt;Interval ([9, 10)) instance at 0x11e6cef98&gt;,
+ &lt;Interval ([10, inf)) instance at 0x11e6ce6d8&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># integrate y bins from -2 to +10</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;Hist (sample,x,z) instance at 0x11e6eb630&gt;
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># rebin z axis by providing a new axis definition</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">rebin</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;znew&quot;</span><span class="p">,</span> <span class="s2">&quot;rebinned z value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;Hist (sample,x,y,znew) instance at 0x11e6eb400&gt;
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># merge categorical axes</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;all samples&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sample 1&#39;</span><span class="p">,</span> <span class="s1">&#39;sample 2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;just sample 1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sample 1&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">hist</span><span class="o">.</span><span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;new category&quot;</span><span class="p">),</span> <span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>&lt;Hist (cat,x,y,z) instance at 0x11e6eb8d0&gt;
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># scale entire histogram by 3 (in-place)</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># scale samples by different values</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;sample 1&#39;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+    <span class="s1">&#39;sample 2&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">scales</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># useful debugging tool: print bins, aka &#39;identifiers&#39;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;StringBin (sample 1) instance at 0x1234f1c50&gt;,
+ &lt;StringBin (sample 2) instance at 0x1234f1cf8&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>[&lt;Interval ([-10, -9)) instance at 0x123480d68&gt;,
+ &lt;Interval ([-9, -8)) instance at 0x1234e8cc0&gt;,
+ &lt;Interval ([-8, -7)) instance at 0x1234e8d30&gt;,
+ &lt;Interval ([-7, -6)) instance at 0x1234e8d68&gt;,
+ &lt;Interval ([-6, -5)) instance at 0x1234e8da0&gt;,
+ &lt;Interval ([-5, -4)) instance at 0x1234e8dd8&gt;,
+ &lt;Interval ([-4, -3)) instance at 0x1234e8e10&gt;,
+ &lt;Interval ([-3, -2)) instance at 0x1234e8e48&gt;,
+ &lt;Interval ([-2, -1)) instance at 0x1234e8e80&gt;,
+ &lt;Interval ([-1, 0)) instance at 0x1234e8eb8&gt;,
+ &lt;Interval ([0, 1)) instance at 0x1234e8ef0&gt;,
+ &lt;Interval ([1, 2)) instance at 0x1234e8f28&gt;,
+ &lt;Interval ([2, 3)) instance at 0x1234e8f60&gt;,
+ &lt;Interval ([3, 4)) instance at 0x1234e8f98&gt;,
+ &lt;Interval ([4, 5)) instance at 0x1234e8fd0&gt;,
+ &lt;Interval ([5, 6)) instance at 0x1234f1048&gt;,
+ &lt;Interval ([6, 7)) instance at 0x1234f1080&gt;,
+ &lt;Interval ([7, 8)) instance at 0x1234f10b8&gt;,
+ &lt;Interval ([8, 9)) instance at 0x1234f10f0&gt;,
+ &lt;Interval ([9, 10)) instance at 0x1234f1128&gt;]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># bin contents are accessed using values</span>
+<span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">sumw2</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>{(&#39;sample 1&#39;,): array([    0. ,     0. ,     0. ,     0. ,     0. ,     0. ,     0. ,
+            0. ,     0. ,     0. ,     0. ,     0. ,     0. ,    46.8,
+          705.6,  4780.8, 12301.2, 12427.2,  4939.2,   759.6]),
+ (&#39;sample 2&#39;,): array([   0.        ,    0.        ,    0.        ,    0.        ,
+           0.        ,    0.        ,    0.        ,    0.        ,
+           0.        ,    0.        ,    0.        ,    0.        ,
+           0.        ,   10.69726264,  177.84043786, 1162.32731037,
+        2967.17190447, 3005.12231838, 1135.81688904,  179.98659522])}
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># data can be exported to ROOT via uproot, but only 1D (and soon 2D)</span>
+<span class="kn">import</span> <span class="nn">uproot</span>
+<span class="n">outputfile</span> <span class="o">=</span> <span class="n">uproot</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;output.root&quot;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">identifiers</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">):</span>
+    <span class="n">outputfile</span><span class="p">[</span><span class="n">sample</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">export1d</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">))</span>
+<span class="n">outputfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Plotting">
+<h2>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this headline">¶</a></h2>
+<p>The most integrated plotting utility in the scientific python ecosystem, by far, is <a class="reference external" href="https://matplotlib.org/">matplotlib</a>. However, as we will see, it is not tailored to HEP needs. To facilitate the transition, there is a developing package called <a class="reference external" href="https://github.com/nsmith-/mpl-hep#mpl-hep">mpl-hep</a>. Meanwhile, Coffea tools provide several convenience functions to aid in plotting <code class="docutils literal notranslate"><span class="pre">Hist</span></code> objects.</p>
+<p>Let’s start by looking at basic mpl histogramming.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Jupyter display backends for matplotlib: nbagg, inline, etc.</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vals</span> <span class="o">=</span> <span class="n">argus</span><span class="p">(</span><span class="n">chi</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># notice the semicolon, which prevents display of the return values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_29_0.png" src="_images/histograms_29_0.png" />
+</div>
+</div>
+<p>Suppose we want to plot pre-binned data, for example from our earlier <code class="docutils literal notranslate"><span class="pre">np.histogram</span></code> usage. Here we start running into the edge of typical mpl usage. As mentioned before, apparently HEP is the only regular user of pre-binned histograms.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">binning</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">h1vals</span><span class="p">,</span> <span class="n">h1bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">h1bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">h1vals</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_31_0.png" src="_images/histograms_31_0.png" />
+</div>
+</div>
+<p>Coffea utilities include a plotting package to aid in displaying pre-binned histograms. Here are a small set of example plots that can be made using this utility. More examples can be found in <a class="reference external" href="https://github.com/CoffeaTeam/fnal-column-analysis-tools/blob/master/binder/plotting-demo.ipynb">this notebook</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hist</span><span class="o">.</span><span class="n">plot1d</span><span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">),</span> <span class="n">overlay</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_33_0.png" src="_images/histograms_33_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hist</span><span class="o">.</span><span class="n">plot1d</span><span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">),</span> <span class="n">overlay</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_34_0.png" src="_images/histograms_34_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hist</span><span class="o">.</span><span class="n">plot2d</span><span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">),</span> <span class="n">xaxis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_35_0.png" src="_images/histograms_35_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># make coarse binned hist and look at several distributions</span>
+<span class="n">hnew</span> <span class="o">=</span> <span class="p">(</span><span class="n">hfcat</span><span class="o">.</span><span class="n">rebin</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;ynew&quot;</span><span class="p">,</span> <span class="s2">&quot;rebinned y value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+        <span class="o">.</span><span class="n">rebin</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">hist</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="s2">&quot;znew&quot;</span><span class="p">,</span> <span class="s2">&quot;rebinned z value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
+       <span class="p">)</span>
+
+<span class="n">hist</span><span class="o">.</span><span class="n">plotgrid</span><span class="p">(</span><span class="n">hnew</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;ynew&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;znew&#39;</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="s1">&#39;sample&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_36_0.png" src="_images/histograms_36_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">numerator</span> <span class="o">=</span> <span class="n">hfcat</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;sample 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">denominator</span> <span class="o">=</span> <span class="n">hfcat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">)</span>
+
+<span class="n">numerator</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\epsilon$&#39;</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">plotratio</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="n">numerator</span><span class="p">,</span>
+                            <span class="n">denom</span><span class="o">=</span><span class="n">denominator</span><span class="p">,</span>
+                            <span class="n">error_opts</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;marker&#39;</span><span class="p">:</span> <span class="s1">&#39;.&#39;</span><span class="p">},</span>
+                            <span class="n">unc</span><span class="o">=</span><span class="s1">&#39;clopper-pearson&#39;</span>
+                           <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/lagray/coffea/coffea/binder/coffea/hist/plot.py:313: RuntimeWarning: invalid value encountered in true_divide
+  rsumw = sumw_num / sumw_denom
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area highlight-none notranslate"><div class="highlight"><pre>
+<span></span>(-10, 10)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/histograms_37_2.png" src="_images/histograms_37_2.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plotting-demo.html" class="btn btn-neutral float-right" title="Coffea Plotting Demo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Coffea by Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fermi National Accelerator Laboratory
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+coffea.hist.export.export1d
+===========================
+
+.. currentmodule:: coffea.hist.export
+
+.. autofunction:: export1d

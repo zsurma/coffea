@@ -1,0 +1,6 @@
+coffea.hist.plot.plotratio
+==========================
+
+.. currentmodule:: coffea.hist.plot
+
+.. autofunction:: plotratio

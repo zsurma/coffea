@@ -1,0 +1,40 @@
+coffea.processor.accumulator.set\_accumulator
+=============================================
+
+.. currentmodule:: coffea.processor.accumulator
+
+.. autoclass:: set_accumulator
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~set_accumulator.__init__
+      ~set_accumulator.add
+      ~set_accumulator.clear
+      ~set_accumulator.copy
+      ~set_accumulator.difference
+      ~set_accumulator.difference_update
+      ~set_accumulator.discard
+      ~set_accumulator.identity
+      ~set_accumulator.intersection
+      ~set_accumulator.intersection_update
+      ~set_accumulator.isdisjoint
+      ~set_accumulator.issubset
+      ~set_accumulator.issuperset
+      ~set_accumulator.pop
+      ~set_accumulator.remove
+      ~set_accumulator.symmetric_difference
+      ~set_accumulator.symmetric_difference_update
+      ~set_accumulator.union
+      ~set_accumulator.update
+   
+   
+
+   
+   
+   

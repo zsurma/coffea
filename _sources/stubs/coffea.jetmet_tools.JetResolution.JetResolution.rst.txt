@@ -1,0 +1,29 @@
+coffea.jetmet\_tools.JetResolution.JetResolution
+================================================
+
+.. currentmodule:: coffea.jetmet_tools.JetResolution
+
+.. autoclass:: JetResolution
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~JetResolution.__init__
+      ~JetResolution.getResolution
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~JetResolution.signature
+   
+   

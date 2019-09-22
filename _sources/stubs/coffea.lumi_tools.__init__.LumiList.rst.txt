@@ -1,0 +1,23 @@
+coffea.lumi\_tools.\_\_init\_\_.LumiList
+========================================
+
+.. currentmodule:: coffea.lumi_tools.__init__
+
+.. autoclass:: LumiList
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LumiList.__init__
+      ~LumiList.clear
+   
+   
+
+   
+   
+   

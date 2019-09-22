@@ -1,0 +1,39 @@
+coffea.processor.dataframe.PreloadedDataFrame
+=============================================
+
+.. currentmodule:: coffea.processor.dataframe
+
+.. autoclass:: PreloadedDataFrame
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PreloadedDataFrame.__init__
+      ~PreloadedDataFrame.clear
+      ~PreloadedDataFrame.get
+      ~PreloadedDataFrame.items
+      ~PreloadedDataFrame.keys
+      ~PreloadedDataFrame.pop
+      ~PreloadedDataFrame.popitem
+      ~PreloadedDataFrame.setdefault
+      ~PreloadedDataFrame.update
+      ~PreloadedDataFrame.values
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PreloadedDataFrame.available
+      ~PreloadedDataFrame.materialized
+      ~PreloadedDataFrame.size
+   
+   

@@ -1,0 +1,40 @@
+coffea.processor.dataframe.LazyDataFrame
+========================================
+
+.. currentmodule:: coffea.processor.dataframe
+
+.. autoclass:: LazyDataFrame
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LazyDataFrame.__init__
+      ~LazyDataFrame.clear
+      ~LazyDataFrame.get
+      ~LazyDataFrame.items
+      ~LazyDataFrame.keys
+      ~LazyDataFrame.pop
+      ~LazyDataFrame.popitem
+      ~LazyDataFrame.preload
+      ~LazyDataFrame.setdefault
+      ~LazyDataFrame.update
+      ~LazyDataFrame.values
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LazyDataFrame.available
+      ~LazyDataFrame.materialized
+      ~LazyDataFrame.size
+   
+   

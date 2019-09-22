@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>coffea.lumi_tools.__init__.LumiList &mdash; coffea 0.6.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="coffea.processor.processor.ProcessorABC" href="coffea.processor.processor.ProcessorABC.html" />
+    <link rel="prev" title="coffea.lumi_tools.__init__.LumiMask" href="coffea.lumi_tools.__init__.LumiMask.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> coffea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Coffea by Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">Reference guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray.html">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods.html">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.arrays.Builder.Initialize.html">coffea.arrays.Builder.Initialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.Hist.html">coffea.hist.hist_tools.Hist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.Bin.html">coffea.hist.hist_tools.Bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.StringBin.html">coffea.hist.hist_tools.StringBin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.Cat.html">coffea.hist.hist_tools.Cat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.Axis.html">coffea.hist.hist_tools.Axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.DenseAxis.html">coffea.hist.hist_tools.DenseAxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.hist_tools.SparseAxis.html">coffea.hist.hist_tools.SparseAxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.export.export1d.html">coffea.hist.export.export1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.plot.plot1d.html">coffea.hist.plot.plot1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.plot.plotratio.html">coffea.hist.plot.plotratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.plot.plot2d.html">coffea.hist.plot.plot2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.hist.plot.plotgrid.html">coffea.hist.plot.plotgrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector.html">coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.jetmet_tools.JetResolution.JetResolution.html">coffea.jetmet_tools.JetResolution.JetResolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor.html">coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty.html">coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.jetmet_tools.JetTransformer.JetTransformer.html">coffea.jetmet_tools.JetTransformer.JetTransformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.extractor.extractor.html">coffea.lookup_tools.extractor.extractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.extractor.evaluator.html">coffea.lookup_tools.extractor.evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.dense_lookup.dense_lookup.html">coffea.lookup_tools.dense_lookup.dense_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup.html">coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.jme_standard_function.jme_standard_function.html">coffea.lookup_tools.jme_standard_function.jme_standard_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.jersf_lookup.jersf_lookup.html">coffea.lookup_tools.jersf_lookup.jersf_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup.html">coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.root_converters.convert_histo_root_file.html">coffea.lookup_tools.root_converters.convert_histo_root_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.csv_converters.convert_btag_csv_file.html">coffea.lookup_tools.csv_converters.convert_btag_csv_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.json_converters.convert_histo_json_file.html">coffea.lookup_tools.json_converters.convert_histo_json_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.txt_converters.convert_jec_txt_file.html">coffea.lookup_tools.txt_converters.convert_jec_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.txt_converters.convert_jersf_txt_file.html">coffea.lookup_tools.txt_converters.convert_jersf_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.txt_converters.convert_jr_txt_file.html">coffea.lookup_tools.txt_converters.convert_jr_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.txt_converters.convert_junc_txt_file.html">coffea.lookup_tools.txt_converters.convert_junc_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lookup_tools.txt_converters.convert_effective_area_file.html">coffea.lookup_tools.txt_converters.convert_effective_area_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lumi_tools.__init__.LumiData.html">coffea.lumi_tools.__init__.LumiData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.lumi_tools.__init__.LumiMask.html">coffea.lumi_tools.__init__.LumiMask</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">coffea.lumi_tools.__init__.LumiList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.processor.ProcessorABC.html">coffea.processor.processor.ProcessorABC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.dataframe.LazyDataFrame.html">coffea.processor.dataframe.LazyDataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.dataframe.PreloadedDataFrame.html">coffea.processor.dataframe.PreloadedDataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.helpers.Weights.html">coffea.processor.helpers.Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.helpers.PackedSelection.html">coffea.processor.helpers.PackedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.executor.iterative_executor.html">coffea.processor.executor.iterative_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.executor.futures_executor.html">coffea.processor.executor.futures_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.executor.run_uproot_job.html">coffea.processor.executor.run_uproot_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.executor.run_parsl_job.html">coffea.processor.executor.run_parsl_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.executor.run_spark_job.html">coffea.processor.executor.run_spark_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.accumulator.value_accumulator.html">coffea.processor.accumulator.value_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.accumulator.column_accumulator.html">coffea.processor.accumulator.column_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.accumulator.set_accumulator.html">coffea.processor.accumulator.set_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.accumulator.dict_accumulator.html">coffea.processor.accumulator.dict_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.accumulator.defaultdict_accumulator.html">coffea.processor.accumulator.defaultdict_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.parsl.parsl_executor.ParslExecutor.html">coffea.processor.parsl.parsl_executor.ParslExecutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.parsl.parsl_executor.parsl_executor.html">coffea.processor.parsl.parsl_executor.parsl_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.spark.spark_executor.SparkExecutor.html">coffea.processor.spark.spark_executor.SparkExecutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coffea.processor.spark.spark_executor.spark_executor.html">coffea.processor.spark.spark_executor.spark_executor</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">coffea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">Reference guide</a> &raquo;</li>
+        
+      <li>coffea.lumi_tools.__init__.LumiList</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/stubs/coffea.lumi_tools.__init__.LumiList.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="coffea-lumi-tools-init-lumilist">
+<h1>coffea.lumi_tools.__init__.LumiList<a class="headerlink" href="#coffea-lumi-tools-init-lumilist" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="coffea.lumi_tools.__init__.LumiList">
+<em class="property">class </em><code class="sig-prename descclassname">coffea.lumi_tools.__init__.</code><code class="sig-name descname">LumiList</code><span class="sig-paren">(</span><em class="sig-param">runs=None</em>, <em class="sig-param">lumis=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/CoffeaTeam/coffea/blob/master/coffea/lumi_tools/__init__.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#coffea.lumi_tools.__init__.LumiList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mergeable (using +=) list of unique (run,lumiSection) values
+The member array can be passed to LumiData.get_lumi()</p>
+<dl class="method">
+<dt id="coffea.lumi_tools.__init__.LumiList.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">runs=None</em>, <em class="sig-param">lumis=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/CoffeaTeam/coffea/blob/master/coffea/lumi_tools/__init__.py"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#coffea.lumi_tools.__init__.LumiList.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#coffea.lumi_tools.__init__.LumiList.__init__" title="coffea.lumi_tools.__init__.LumiList.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([runs, lumis])</p></td>
+<td><p>Initialize self.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="coffea.processor.processor.ProcessorABC.html" class="btn btn-neutral float-right" title="coffea.processor.processor.ProcessorABC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="coffea.lumi_tools.__init__.LumiMask.html" class="btn btn-neutral float-left" title="coffea.lumi_tools.__init__.LumiMask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fermi National Accelerator Laboratory
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

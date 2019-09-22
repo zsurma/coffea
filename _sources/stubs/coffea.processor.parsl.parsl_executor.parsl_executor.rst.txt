@@ -1,0 +1,6 @@
+coffea.processor.parsl.parsl\_executor.parsl\_executor
+======================================================
+
+.. currentmodule:: coffea.processor.parsl.parsl_executor
+
+.. autodata:: parsl_executor

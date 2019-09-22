@@ -1,0 +1,29 @@
+coffea.jetmet\_tools.JetResolutionScaleFactor.JetResolutionScaleFactor
+======================================================================
+
+.. currentmodule:: coffea.jetmet_tools.JetResolutionScaleFactor
+
+.. autoclass:: JetResolutionScaleFactor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~JetResolutionScaleFactor.__init__
+      ~JetResolutionScaleFactor.getScaleFactor
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~JetResolutionScaleFactor.signature
+   
+   

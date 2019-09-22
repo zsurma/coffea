@@ -1,0 +1,6 @@
+coffea.processor.executor.run\_spark\_job
+=========================================
+
+.. currentmodule:: coffea.processor.executor
+
+.. autofunction:: run_spark_job

@@ -1,0 +1,28 @@
+coffea.lookup\_tools.jme\_standard\_function.jme\_standard\_function
+====================================================================
+
+.. currentmodule:: coffea.lookup_tools.jme_standard_function
+
+.. autoclass:: jme_standard_function
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~jme_standard_function.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~jme_standard_function.signature
+   
+   

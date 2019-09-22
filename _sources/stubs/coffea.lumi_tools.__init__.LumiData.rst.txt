@@ -1,0 +1,31 @@
+coffea.lumi\_tools.\_\_init\_\_.LumiData
+========================================
+
+.. currentmodule:: coffea.lumi_tools.__init__
+
+.. autoclass:: LumiData
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LumiData.__init__
+      ~LumiData.build_lumi_table
+      ~LumiData.get_lumi
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LumiData.build_lumi_table_kernel
+      ~LumiData.get_lumi_kernel
+   
+   

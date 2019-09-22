@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart &mdash; coffea 0.6.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coffea by Example" href="introduction.html" />
+    <link rel="prev" title="coffea - Columnar Object Framework For Efficient Analysis" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> coffea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-using-pip">Installation using Pip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-optional-packages">Installation of Optional Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#for-developers">For Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Coffea by Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference guide</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">coffea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quickstart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quick_start.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>To try coffea now (without installing any code) experiment with our <a class="reference external" href="https://mybinder.org/v2/gh/CoffeaTeam/coffea/master?filepath=binder/">hosted tutorial notebooks</a>.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>coffea is available on PyPI, Python 3.6+ is preferred since it supports all features of coffea, but a subset of coffea features will run in Python 2.7+. All functional features in each python version are routinely tested. You can see the python version you have installed by typing the following at the command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+<p>coffea core functionality (i.e. everything but parsl and spark scale-out) has been tested on Windows, Linux and MacOS.
+The parsl and spark scale-out options are tested to work with Linux and MacOS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>coffea starts from v0.5.0 in the PyPI repository since before v0.5.0 it was hosted as <a class="reference external" href="https://pypi.org/project/fnal-column-analysis-tools/">fnal-column-analysis-tools</a>. If you are still using fnal-column-analysis-tools, please move to <a class="reference external" href="https://pypi.org/project/coffea/">coffea</a>!</p>
+</div>
+<div class="section" id="installation-using-pip">
+<h3>Installation using Pip<a class="headerlink" href="#installation-using-pip" title="Permalink to this headline">¶</a></h3>
+<p>While <code class="docutils literal notranslate"><span class="pre">pip</span></code> and <code class="docutils literal notranslate"><span class="pre">pip3</span></code> can be used to install coffea we suggest the following approach
+for reliable installation when many Python environments are avaialble.</p>
+<ol class="arabic">
+<li><p>Install coffea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install coffea
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To update a previously installed coffea to a newer version, use: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">coffea</span></code></p>
+<ol class="arabic" start="2">
+<li><p>Install Jupyter for Tutorial notebooks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install jupyter
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more detailed info on setting up Jupyter with Python3.6 go <a class="reference external" href="https://jupyter.readthedocs.io/en/latest/install.html">here</a></p>
+</div>
+</div>
+<div class="section" id="installation-of-optional-packages">
+<h3>Installation of Optional Packages<a class="headerlink" href="#installation-of-optional-packages" title="Permalink to this headline">¶</a></h3>
+<p>coffea supports several optional components that require additional module installations.
+For example support for Apache <a class="reference external" href="https://spark.apache.org/">Spark</a>, or parsl scale-out engines require additional packages that
+can be installed easily via <code class="docutils literal notranslate"><span class="pre">pip</span></code> using a pip extras option.</p>
+<p>Here’s a list of the components and their extras option:</p>
+<ul class="simple">
+<li><p>Apache <a class="reference external" href="https://spark.apache.org/">Spark</a> job launcher : <a class="reference internal" href="stubs/coffea.processor.executor.run_spark_job.html#coffea.processor.executor.run_spark_job" title="coffea.processor.executor.run_spark_job"><code class="xref any py py-func docutils literal notranslate"><span class="pre">run_spark_job</span></code></a></p></li>
+<li><p><a class="reference external" href="https://github.com/Parsl/parsl/">parsl</a> job launcher: <a class="reference internal" href="stubs/coffea.processor.executor.run_parsl_job.html#coffea.processor.executor.run_parsl_job" title="coffea.processor.executor.run_parsl_job"><code class="xref any py py-func docutils literal notranslate"><span class="pre">run_parsl_job</span></code></a></p></li>
+</ul>
+<p>Optional extras can be installed using the following syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install coffea[&lt;optional_package1&gt;, &lt;optional_package2&gt;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="for-developers">
+<h2>For Developers<a class="headerlink" href="#for-developers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Download coffea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/CoffeaTeam/coffea
+</pre></div>
+</div>
+</li>
+<li><p>Install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd coffea
+$ pip install .
+( To install specific extra options from the source :)
+$ pip install .[&lt;optional_package1&gt;...]
+</pre></div>
+</div>
+</li>
+<li><p>Start writing and doing physics analysis with coffea!</p></li>
+<li><p>Test before committing some fancy new feature you made to coffea:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py flake8
+$ python setup.py pytest
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>coffea requires the following:</p>
+<ul class="simple">
+<li><p>Python 2.7, 3.6+</p></li>
+</ul>
+<p>For testing:</p>
+<ul class="simple">
+<li><p>pytest</p></li>
+<li><p>coverage</p></li>
+</ul>
+<p>For building documentation:</p>
+<ul class="simple">
+<li><p>nbsphinx</p></li>
+<li><p>sphinx</p></li>
+<li><p>sphinx_rtd_theme</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Coffea by Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="coffea - Columnar Object Framework For Efficient Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fermi National Accelerator Laboratory
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

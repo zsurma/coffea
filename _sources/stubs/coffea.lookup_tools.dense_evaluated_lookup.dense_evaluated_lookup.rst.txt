@@ -1,0 +1,22 @@
+coffea.lookup\_tools.dense\_evaluated\_lookup.dense\_evaluated\_lookup
+======================================================================
+
+.. currentmodule:: coffea.lookup_tools.dense_evaluated_lookup
+
+.. autoclass:: dense_evaluated_lookup
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~dense_evaluated_lookup.__init__
+   
+   
+
+   
+   
+   

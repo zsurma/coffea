@@ -1,0 +1,54 @@
+coffea.hist.hist\_tools.Hist
+============================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: Hist
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Hist.__init__
+      ~Hist.add
+      ~Hist.axes
+      ~Hist.axis
+      ~Hist.clear
+      ~Hist.compatible
+      ~Hist.copy
+      ~Hist.dense_axes
+      ~Hist.dense_dim
+      ~Hist.dim
+      ~Hist.fill
+      ~Hist.group
+      ~Hist.identifiers
+      ~Hist.identity
+      ~Hist.integrate
+      ~Hist.profile
+      ~Hist.project
+      ~Hist.rebin
+      ~Hist.remove
+      ~Hist.scale
+      ~Hist.sparse_axes
+      ~Hist.sparse_dim
+      ~Hist.sparse_nbins
+      ~Hist.sum
+      ~Hist.values
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Hist.DEFAULT_DTYPE
+      ~Hist.fields
+      ~Hist.label
+   
+   

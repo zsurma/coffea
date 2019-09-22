@@ -1,0 +1,29 @@
+coffea.lumi\_tools.\_\_init\_\_.LumiMask
+========================================
+
+.. currentmodule:: coffea.lumi_tools.__init__
+
+.. autoclass:: LumiMask
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LumiMask.__init__
+      ~LumiMask.apply_run_lumi_mask
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LumiMask.apply_run_lumi_mask_kernel
+   
+   

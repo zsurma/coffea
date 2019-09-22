@@ -1,0 +1,35 @@
+coffea.processor.accumulator.dict\_accumulator
+==============================================
+
+.. currentmodule:: coffea.processor.accumulator
+
+.. autoclass:: dict_accumulator
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~dict_accumulator.__init__
+      ~dict_accumulator.add
+      ~dict_accumulator.clear
+      ~dict_accumulator.copy
+      ~dict_accumulator.fromkeys
+      ~dict_accumulator.get
+      ~dict_accumulator.identity
+      ~dict_accumulator.items
+      ~dict_accumulator.keys
+      ~dict_accumulator.pop
+      ~dict_accumulator.popitem
+      ~dict_accumulator.setdefault
+      ~dict_accumulator.update
+      ~dict_accumulator.values
+   
+   
+
+   
+   
+   

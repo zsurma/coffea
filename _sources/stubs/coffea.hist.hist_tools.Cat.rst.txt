@@ -1,0 +1,32 @@
+coffea.hist.hist\_tools.Cat
+===========================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: Cat
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Cat.__init__
+      ~Cat.identifiers
+      ~Cat.index
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Cat.label
+      ~Cat.name
+      ~Cat.size
+   
+   

@@ -1,0 +1,6 @@
+coffea.hist.plot.plotgrid
+=========================
+
+.. currentmodule:: coffea.hist.plot
+
+.. autofunction:: plotgrid

@@ -1,0 +1,6 @@
+coffea.lookup\_tools.csv\_converters.convert\_btag\_csv\_file
+=============================================================
+
+.. currentmodule:: coffea.lookup_tools.csv_converters
+
+.. autofunction:: convert_btag_csv_file

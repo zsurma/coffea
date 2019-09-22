@@ -1,0 +1,28 @@
+coffea.lookup\_tools.jec\_uncertainty\_lookup.jec\_uncertainty\_lookup
+======================================================================
+
+.. currentmodule:: coffea.lookup_tools.jec_uncertainty_lookup
+
+.. autoclass:: jec_uncertainty_lookup
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~jec_uncertainty_lookup.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~jec_uncertainty_lookup.signature
+   
+   

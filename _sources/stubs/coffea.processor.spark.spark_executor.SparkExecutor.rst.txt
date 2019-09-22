@@ -1,0 +1,28 @@
+coffea.processor.spark.spark\_executor.SparkExecutor
+====================================================
+
+.. currentmodule:: coffea.processor.spark.spark_executor
+
+.. autoclass:: SparkExecutor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SparkExecutor.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SparkExecutor.counts
+   
+   

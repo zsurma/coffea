@@ -1,0 +1,31 @@
+coffea.processor.helpers.PackedSelection
+========================================
+
+.. currentmodule:: coffea.processor.helpers
+
+.. autoclass:: PackedSelection
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PackedSelection.__init__
+      ~PackedSelection.add
+      ~PackedSelection.all
+      ~PackedSelection.require
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PackedSelection.names
+   
+   

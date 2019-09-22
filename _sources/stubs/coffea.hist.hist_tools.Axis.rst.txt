@@ -1,0 +1,29 @@
+coffea.hist.hist\_tools.Axis
+============================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: Axis
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Axis.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Axis.label
+      ~Axis.name
+   
+   

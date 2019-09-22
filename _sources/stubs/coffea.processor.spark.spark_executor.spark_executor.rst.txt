@@ -1,0 +1,6 @@
+coffea.processor.spark.spark\_executor.spark\_executor
+======================================================
+
+.. currentmodule:: coffea.processor.spark.spark_executor
+
+.. autodata:: spark_executor

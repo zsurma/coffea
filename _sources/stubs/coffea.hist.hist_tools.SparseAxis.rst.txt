@@ -1,0 +1,29 @@
+coffea.hist.hist\_tools.SparseAxis
+==================================
+
+.. currentmodule:: coffea.hist.hist_tools
+
+.. autoclass:: SparseAxis
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SparseAxis.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SparseAxis.label
+      ~SparseAxis.name
+   
+   

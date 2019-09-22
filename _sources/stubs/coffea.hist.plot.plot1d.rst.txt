@@ -1,0 +1,6 @@
+coffea.hist.plot.plot1d
+=======================
+
+.. currentmodule:: coffea.hist.plot
+
+.. autofunction:: plot1d

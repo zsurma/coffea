@@ -1,0 +1,30 @@
+coffea.jetmet\_tools.FactorizedJetCorrector.FactorizedJetCorrector
+==================================================================
+
+.. currentmodule:: coffea.jetmet_tools.FactorizedJetCorrector
+
+.. autoclass:: FactorizedJetCorrector
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FactorizedJetCorrector.__init__
+      ~FactorizedJetCorrector.getCorrection
+      ~FactorizedJetCorrector.getSubCorrections
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~FactorizedJetCorrector.signature
+   
+   

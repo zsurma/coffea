@@ -1,0 +1,28 @@
+coffea.lookup\_tools.jersf\_lookup.jersf\_lookup
+================================================
+
+.. currentmodule:: coffea.lookup_tools.jersf_lookup
+
+.. autoclass:: jersf_lookup
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~jersf_lookup.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~jersf_lookup.signature
+   
+   

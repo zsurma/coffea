@@ -1,0 +1,155 @@
+coffea.analysis\_objects.JaggedCandidateArray.JaggedCandidateArray
+==================================================================
+
+.. currentmodule:: coffea.analysis_objects.JaggedCandidateArray
+
+.. autoclass:: JaggedCandidateArray
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~JaggedCandidateArray.__init__
+      ~JaggedCandidateArray.add_attributes
+      ~JaggedCandidateArray.all
+      ~JaggedCandidateArray.any
+      ~JaggedCandidateArray.argchoose
+      ~JaggedCandidateArray.argcross
+      ~JaggedCandidateArray.argdistincts
+      ~JaggedCandidateArray.argmatch
+      ~JaggedCandidateArray.argmax
+      ~JaggedCandidateArray.argmin
+      ~JaggedCandidateArray.argpairs
+      ~JaggedCandidateArray.argsort
+      ~JaggedCandidateArray.astype
+      ~JaggedCandidateArray.boolmask
+      ~JaggedCandidateArray.candidatesfromcounts
+      ~JaggedCandidateArray.candidatesfromoffsets
+      ~JaggedCandidateArray.choose
+      ~JaggedCandidateArray.compact
+      ~JaggedCandidateArray.concatenate
+      ~JaggedCandidateArray.copy
+      ~JaggedCandidateArray.count
+      ~JaggedCandidateArray.count_nonzero
+      ~JaggedCandidateArray.counts2offsets
+      ~JaggedCandidateArray.cross
+      ~JaggedCandidateArray.deepcopy
+      ~JaggedCandidateArray.distincts
+      ~JaggedCandidateArray.empty_like
+      ~JaggedCandidateArray.fastmatch
+      ~JaggedCandidateArray.fillna
+      ~JaggedCandidateArray.flatten
+      ~JaggedCandidateArray.flattentuple
+      ~JaggedCandidateArray.fromcounts
+      ~JaggedCandidateArray.fromfolding
+      ~JaggedCandidateArray.fromiter
+      ~JaggedCandidateArray.fromjagged
+      ~JaggedCandidateArray.fromlocalindex
+      ~JaggedCandidateArray.fromoffsets
+      ~JaggedCandidateArray.fromparents
+      ~JaggedCandidateArray.fromregular
+      ~JaggedCandidateArray.fromuniques
+      ~JaggedCandidateArray.match
+      ~JaggedCandidateArray.max
+      ~JaggedCandidateArray.maybemixin
+      ~JaggedCandidateArray.mean
+      ~JaggedCandidateArray.min
+      ~JaggedCandidateArray.mixin
+      ~JaggedCandidateArray.moment
+      ~JaggedCandidateArray.offsets2parents
+      ~JaggedCandidateArray.offsetsaliased
+      ~JaggedCandidateArray.ones_like
+      ~JaggedCandidateArray.pad
+      ~JaggedCandidateArray.pairs
+      ~JaggedCandidateArray.parents2startsstops
+      ~JaggedCandidateArray.prod
+      ~JaggedCandidateArray.reduce
+      ~JaggedCandidateArray.regular
+      ~JaggedCandidateArray.startsstops2parents
+      ~JaggedCandidateArray.std
+      ~JaggedCandidateArray.structure1d
+      ~JaggedCandidateArray.sum
+      ~JaggedCandidateArray.tojagged
+      ~JaggedCandidateArray.tolist
+      ~JaggedCandidateArray.uniques2offsetsparents
+      ~JaggedCandidateArray.unzip
+      ~JaggedCandidateArray.valid
+      ~JaggedCandidateArray.var
+      ~JaggedCandidateArray.zeros_like
+      ~JaggedCandidateArray.zip
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~JaggedCandidateArray.AppendableArray
+      ~JaggedCandidateArray.BITMASKTYPE
+      ~JaggedCandidateArray.BOOLTYPE
+      ~JaggedCandidateArray.BitMaskedArray
+      ~JaggedCandidateArray.CHARTYPE
+      ~JaggedCandidateArray.ChunkedArray
+      ~JaggedCandidateArray.DEFAULTTYPE
+      ~JaggedCandidateArray.INDEXTYPE
+      ~JaggedCandidateArray.IndexedArray
+      ~JaggedCandidateArray.IndexedMaskedArray
+      ~JaggedCandidateArray.JaggedArray
+      ~JaggedCandidateArray.MASKTYPE
+      ~JaggedCandidateArray.MaskedArray
+      ~JaggedCandidateArray.Methods
+      ~JaggedCandidateArray.ObjectArray
+      ~JaggedCandidateArray.SparseArray
+      ~JaggedCandidateArray.StringArray
+      ~JaggedCandidateArray.TAGTYPE
+      ~JaggedCandidateArray.Table
+      ~JaggedCandidateArray.UnionArray
+      ~JaggedCandidateArray.VirtualArray
+      ~JaggedCandidateArray.allow_iter
+      ~JaggedCandidateArray.allow_tonumpy
+      ~JaggedCandidateArray.awkward
+      ~JaggedCandidateArray.check_prop_valid
+      ~JaggedCandidateArray.check_whole_valid
+      ~JaggedCandidateArray.columns
+      ~JaggedCandidateArray.content
+      ~JaggedCandidateArray.counts
+      ~JaggedCandidateArray.dtype
+      ~JaggedCandidateArray.eta
+      ~JaggedCandidateArray.i0
+      ~JaggedCandidateArray.i1
+      ~JaggedCandidateArray.i2
+      ~JaggedCandidateArray.i3
+      ~JaggedCandidateArray.i4
+      ~JaggedCandidateArray.i5
+      ~JaggedCandidateArray.i6
+      ~JaggedCandidateArray.i7
+      ~JaggedCandidateArray.i8
+      ~JaggedCandidateArray.i9
+      ~JaggedCandidateArray.iscompact
+      ~JaggedCandidateArray.ismasked
+      ~JaggedCandidateArray.istuple
+      ~JaggedCandidateArray.isunmasked
+      ~JaggedCandidateArray.layout
+      ~JaggedCandidateArray.localindex
+      ~JaggedCandidateArray.mass
+      ~JaggedCandidateArray.nbytes
+      ~JaggedCandidateArray.ndim
+      ~JaggedCandidateArray.offsets
+      ~JaggedCandidateArray.p4
+      ~JaggedCandidateArray.parents
+      ~JaggedCandidateArray.phi
+      ~JaggedCandidateArray.pt
+      ~JaggedCandidateArray.rowname
+      ~JaggedCandidateArray.shape
+      ~JaggedCandidateArray.size
+      ~JaggedCandidateArray.starts
+      ~JaggedCandidateArray.stops
+      ~JaggedCandidateArray.type
+   
+   

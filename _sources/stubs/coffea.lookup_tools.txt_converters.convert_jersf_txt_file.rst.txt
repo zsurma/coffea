@@ -1,0 +1,6 @@
+coffea.lookup\_tools.txt\_converters.convert\_jersf\_txt\_file
+==============================================================
+
+.. currentmodule:: coffea.lookup_tools.txt_converters
+
+.. autofunction:: convert_jersf_txt_file

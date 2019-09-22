@@ -1,0 +1,54 @@
+coffea.analysis\_objects.JaggedCandidateArray.JaggedCandidateMethods
+====================================================================
+
+.. currentmodule:: coffea.analysis_objects.JaggedCandidateArray
+
+.. autoclass:: JaggedCandidateMethods
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~JaggedCandidateMethods.__init__
+      ~JaggedCandidateMethods.add_attributes
+      ~JaggedCandidateMethods.argmatch
+      ~JaggedCandidateMethods.candidatesfromcounts
+      ~JaggedCandidateMethods.candidatesfromoffsets
+      ~JaggedCandidateMethods.choose
+      ~JaggedCandidateMethods.cross
+      ~JaggedCandidateMethods.distincts
+      ~JaggedCandidateMethods.fastmatch
+      ~JaggedCandidateMethods.match
+      ~JaggedCandidateMethods.maybemixin
+      ~JaggedCandidateMethods.mixin
+      ~JaggedCandidateMethods.pairs
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~JaggedCandidateMethods.eta
+      ~JaggedCandidateMethods.i0
+      ~JaggedCandidateMethods.i1
+      ~JaggedCandidateMethods.i2
+      ~JaggedCandidateMethods.i3
+      ~JaggedCandidateMethods.i4
+      ~JaggedCandidateMethods.i5
+      ~JaggedCandidateMethods.i6
+      ~JaggedCandidateMethods.i7
+      ~JaggedCandidateMethods.i8
+      ~JaggedCandidateMethods.i9
+      ~JaggedCandidateMethods.mass
+      ~JaggedCandidateMethods.p4
+      ~JaggedCandidateMethods.phi
+      ~JaggedCandidateMethods.pt
+   
+   

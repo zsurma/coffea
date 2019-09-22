@@ -1,0 +1,544 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference guide &mdash; coffea 0.6.10 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray" href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray.html" />
+    <link rel="prev" title="Four Muon Spectrum" href="muonspectrum_v4.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> coffea
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Coffea by Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray.html">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods.html">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.arrays.Builder.Initialize.html">coffea.arrays.Builder.Initialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.Hist.html">coffea.hist.hist_tools.Hist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.Bin.html">coffea.hist.hist_tools.Bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.StringBin.html">coffea.hist.hist_tools.StringBin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.Cat.html">coffea.hist.hist_tools.Cat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.Axis.html">coffea.hist.hist_tools.Axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.DenseAxis.html">coffea.hist.hist_tools.DenseAxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.hist_tools.SparseAxis.html">coffea.hist.hist_tools.SparseAxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.export.export1d.html">coffea.hist.export.export1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.plot.plot1d.html">coffea.hist.plot.plot1d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.plot.plotratio.html">coffea.hist.plot.plotratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.plot.plot2d.html">coffea.hist.plot.plot2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.hist.plot.plotgrid.html">coffea.hist.plot.plotgrid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector.html">coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.jetmet_tools.JetResolution.JetResolution.html">coffea.jetmet_tools.JetResolution.JetResolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor.html">coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty.html">coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.jetmet_tools.JetTransformer.JetTransformer.html">coffea.jetmet_tools.JetTransformer.JetTransformer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.extractor.extractor.html">coffea.lookup_tools.extractor.extractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.extractor.evaluator.html">coffea.lookup_tools.extractor.evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.dense_lookup.dense_lookup.html">coffea.lookup_tools.dense_lookup.dense_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup.html">coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.jme_standard_function.jme_standard_function.html">coffea.lookup_tools.jme_standard_function.jme_standard_function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.jersf_lookup.jersf_lookup.html">coffea.lookup_tools.jersf_lookup.jersf_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup.html">coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.root_converters.convert_histo_root_file.html">coffea.lookup_tools.root_converters.convert_histo_root_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.csv_converters.convert_btag_csv_file.html">coffea.lookup_tools.csv_converters.convert_btag_csv_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.json_converters.convert_histo_json_file.html">coffea.lookup_tools.json_converters.convert_histo_json_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jec_txt_file.html">coffea.lookup_tools.txt_converters.convert_jec_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jersf_txt_file.html">coffea.lookup_tools.txt_converters.convert_jersf_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jr_txt_file.html">coffea.lookup_tools.txt_converters.convert_jr_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_junc_txt_file.html">coffea.lookup_tools.txt_converters.convert_junc_txt_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_effective_area_file.html">coffea.lookup_tools.txt_converters.convert_effective_area_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiData.html">coffea.lumi_tools.__init__.LumiData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiMask.html">coffea.lumi_tools.__init__.LumiMask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiList.html">coffea.lumi_tools.__init__.LumiList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.processor.ProcessorABC.html">coffea.processor.processor.ProcessorABC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.dataframe.LazyDataFrame.html">coffea.processor.dataframe.LazyDataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.dataframe.PreloadedDataFrame.html">coffea.processor.dataframe.PreloadedDataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.helpers.Weights.html">coffea.processor.helpers.Weights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.helpers.PackedSelection.html">coffea.processor.helpers.PackedSelection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.executor.iterative_executor.html">coffea.processor.executor.iterative_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.executor.futures_executor.html">coffea.processor.executor.futures_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.executor.run_uproot_job.html">coffea.processor.executor.run_uproot_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.executor.run_parsl_job.html">coffea.processor.executor.run_parsl_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.executor.run_spark_job.html">coffea.processor.executor.run_spark_job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.accumulator.value_accumulator.html">coffea.processor.accumulator.value_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.accumulator.column_accumulator.html">coffea.processor.accumulator.column_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.accumulator.set_accumulator.html">coffea.processor.accumulator.set_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.accumulator.dict_accumulator.html">coffea.processor.accumulator.dict_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.accumulator.defaultdict_accumulator.html">coffea.processor.accumulator.defaultdict_accumulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.parsl.parsl_executor.ParslExecutor.html">coffea.processor.parsl.parsl_executor.ParslExecutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.parsl.parsl_executor.parsl_executor.html">coffea.processor.parsl.parsl_executor.parsl_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.spark.spark_executor.SparkExecutor.html">coffea.processor.spark.spark_executor.SparkExecutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stubs/coffea.processor.spark.spark_executor.spark_executor.html">coffea.processor.spark.spark_executor.spark_executor</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">coffea</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reference guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/reference.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="reference-guide">
+<h1>Reference guide<a class="headerlink" href="#reference-guide" title="Permalink to this headline">¶</a></h1>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray.html#coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray" title="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray</span></code></a></p></td>
+<td><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">awkward.array.objects.JaggedArrayMethods</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods.html#coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods" title="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateMethods</span></code></a></p></td>
+<td><p>JaggedCandidateMethods defines the additional methods that turn a JaggedArray into a JaggedCandidateArray suitable for most analysis work.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.arrays.Builder.Initialize.html#coffea.arrays.Builder.Initialize" title="coffea.arrays.Builder.Initialize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.arrays.Builder.Initialize</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.Hist.html#coffea.hist.hist_tools.Hist" title="coffea.hist.hist_tools.Hist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.Hist</span></code></a></p></td>
+<td><p>Specify a multidimensional histogram.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.Bin.html#coffea.hist.hist_tools.Bin" title="coffea.hist.hist_tools.Bin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.Bin</span></code></a></p></td>
+<td><p>Specify a binned axis with name and label, and binning.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.StringBin.html#coffea.hist.hist_tools.StringBin" title="coffea.hist.hist_tools.StringBin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.StringBin</span></code></a></p></td>
+<td><p>A string used to fill a sparse axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.Cat.html#coffea.hist.hist_tools.Cat" title="coffea.hist.hist_tools.Cat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.Cat</span></code></a></p></td>
+<td><p>Specify a category axis with name and label.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.Axis.html#coffea.hist.hist_tools.Axis" title="coffea.hist.hist_tools.Axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.Axis</span></code></a></p></td>
+<td><p>Axis: Base class for any type of axis Derived classes should implement, at least, an equality override</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.DenseAxis.html#coffea.hist.hist_tools.DenseAxis" title="coffea.hist.hist_tools.DenseAxis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.DenseAxis</span></code></a></p></td>
+<td><p>DenseAxis: ABC for a fixed-size densely-indexed axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.hist_tools.SparseAxis.html#coffea.hist.hist_tools.SparseAxis" title="coffea.hist.hist_tools.SparseAxis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.hist_tools.SparseAxis</span></code></a></p></td>
+<td><p>SparseAxis: ABC for a sparse axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.export.export1d.html#coffea.hist.export.export1d" title="coffea.hist.export.export1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.export.export1d</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.plot.plot1d.html#coffea.hist.plot.plot1d" title="coffea.hist.plot.plot1d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.plot.plot1d</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param hist</dt>
+<dd class="field-odd"><p>Hist object with maximum of two dimensions</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.plot.plotratio.html#coffea.hist.plot.plotratio" title="coffea.hist.plot.plotratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.plot.plotratio</span></code></a></p></td>
+<td><p>Create a ratio plot, dividing two compatible histograms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.hist.plot.plot2d.html#coffea.hist.plot.plot2d" title="coffea.hist.plot.plot2d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.plot.plot2d</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param hist</dt>
+<dd class="field-odd"><p>Hist object with two dimensions</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.hist.plot.plotgrid.html#coffea.hist.plot.plotgrid" title="coffea.hist.plot.plotgrid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.hist.plot.plotgrid</span></code></a></p></td>
+<td><p>Create a grid of plots, enumerating identifiers on up to 3 axes.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector.html#coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector" title="coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.jetmet_tools.FactorizedJetCorrector.FactorizedJetCorrector</span></code></a></p></td>
+<td><p>This class is a columnar implementation of the FactorizedJetCorrector tool in CMSSW and FWLite.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.jetmet_tools.JetResolution.JetResolution.html#coffea.jetmet_tools.JetResolution.JetResolution" title="coffea.jetmet_tools.JetResolution.JetResolution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.jetmet_tools.JetResolution.JetResolution</span></code></a></p></td>
+<td><p>This class is a columnar implementation of the JetResolution tool in CMSSW and FWLite.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor.html#coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor" title="coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.jetmet_tools.JetResolutionScaleFactor.JetResolutionScaleFactor</span></code></a></p></td>
+<td><p>This class is a columnar implementation of the JetResolutionScaleFactor tool in CMSSW and FWLite.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty.html#coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty" title="coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.jetmet_tools.JetCorrectionUncertainty.JetCorrectionUncertainty</span></code></a></p></td>
+<td><p>This class is a columnar implementation of the JetCorrectionUncertainty tool in CMSSW and FWLite.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.jetmet_tools.JetTransformer.JetTransformer.html#coffea.jetmet_tools.JetTransformer.JetTransformer" title="coffea.jetmet_tools.JetTransformer.JetTransformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.jetmet_tools.JetTransformer.JetTransformer</span></code></a></p></td>
+<td><p>This class is a columnar implementation of the the standard recipes for apply JECs, and the various scale factors and uncertainties therein.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.extractor.extractor.html#coffea.lookup_tools.extractor.extractor" title="coffea.lookup_tools.extractor.extractor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.extractor.extractor</span></code></a></p></td>
+<td><p>This class defines a common entry point for defining functions that extract the inputs to build lookup tables from various kinds of files.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.extractor.evaluator.html#coffea.lookup_tools.extractor.evaluator" title="coffea.lookup_tools.extractor.evaluator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.extractor.evaluator</span></code></a></p></td>
+<td><p>The evaluator class serves as a single point of extry for looking up values of histograms and other functions read in with the extractor class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.dense_lookup.dense_lookup.html#coffea.lookup_tools.dense_lookup.dense_lookup" title="coffea.lookup_tools.dense_lookup.dense_lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.dense_lookup.dense_lookup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup.html#coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup" title="coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.dense_evaluated_lookup.dense_evaluated_lookup</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.jme_standard_function.jme_standard_function.html#coffea.lookup_tools.jme_standard_function.jme_standard_function" title="coffea.lookup_tools.jme_standard_function.jme_standard_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.jme_standard_function.jme_standard_function</span></code></a></p></td>
+<td><p>This class defines a lookup table for jet energy corrections and resolutions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.jersf_lookup.jersf_lookup.html#coffea.lookup_tools.jersf_lookup.jersf_lookup" title="coffea.lookup_tools.jersf_lookup.jersf_lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.jersf_lookup.jersf_lookup</span></code></a></p></td>
+<td><p>This class defines a lookup table for jet energy resolution scale factors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup.html#coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup" title="coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.jec_uncertainty_lookup.jec_uncertainty_lookup</span></code></a></p></td>
+<td><p>This class defines a lookup table for jet energy scale uncertainties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.root_converters.convert_histo_root_file.html#coffea.lookup_tools.root_converters.convert_histo_root_file" title="coffea.lookup_tools.root_converters.convert_histo_root_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.root_converters.convert_histo_root_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.csv_converters.convert_btag_csv_file.html#coffea.lookup_tools.csv_converters.convert_btag_csv_file" title="coffea.lookup_tools.csv_converters.convert_btag_csv_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.csv_converters.convert_btag_csv_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.json_converters.convert_histo_json_file.html#coffea.lookup_tools.json_converters.convert_histo_json_file" title="coffea.lookup_tools.json_converters.convert_histo_json_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.json_converters.convert_histo_json_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jec_txt_file.html#coffea.lookup_tools.txt_converters.convert_jec_txt_file" title="coffea.lookup_tools.txt_converters.convert_jec_txt_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.txt_converters.convert_jec_txt_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jersf_txt_file.html#coffea.lookup_tools.txt_converters.convert_jersf_txt_file" title="coffea.lookup_tools.txt_converters.convert_jersf_txt_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.txt_converters.convert_jersf_txt_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_jr_txt_file.html#coffea.lookup_tools.txt_converters.convert_jr_txt_file" title="coffea.lookup_tools.txt_converters.convert_jr_txt_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.txt_converters.convert_jr_txt_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_junc_txt_file.html#coffea.lookup_tools.txt_converters.convert_junc_txt_file" title="coffea.lookup_tools.txt_converters.convert_junc_txt_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.txt_converters.convert_junc_txt_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lookup_tools.txt_converters.convert_effective_area_file.html#coffea.lookup_tools.txt_converters.convert_effective_area_file" title="coffea.lookup_tools.txt_converters.convert_effective_area_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lookup_tools.txt_converters.convert_effective_area_file</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiData.html#coffea.lumi_tools.__init__.LumiData" title="coffea.lumi_tools.__init__.LumiData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lumi_tools.__init__.LumiData</span></code></a></p></td>
+<td><p>Class to hold and parse per-lumiSection integrated lumi values as returned by brilcalc, e.g.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiMask.html#coffea.lumi_tools.__init__.LumiMask" title="coffea.lumi_tools.__init__.LumiMask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lumi_tools.__init__.LumiMask</span></code></a></p></td>
+<td><p>Class that parses a ‘golden json’ into an efficient valid lumiSection lookup table Instantiate with the json file, and call with an array of runs and lumiSections, to return a boolean array, where valid lumiSections are marked True</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.lumi_tools.__init__.LumiList.html#coffea.lumi_tools.__init__.LumiList" title="coffea.lumi_tools.__init__.LumiList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.lumi_tools.__init__.LumiList</span></code></a></p></td>
+<td><p>Mergeable (using +=) list of unique (run,lumiSection) values The member array can be passed to LumiData.get_lumi()</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.processor.ProcessorABC.html#coffea.processor.processor.ProcessorABC" title="coffea.processor.processor.ProcessorABC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.processor.ProcessorABC</span></code></a></p></td>
+<td><p>ABC for a generalized processor The various data delivery mechanisms (spark, striped, uproot, uproot+futures, condor, …) could receive such an object and the appropriate metadata to deliver dataframes to it.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.dataframe.LazyDataFrame.html#coffea.processor.dataframe.LazyDataFrame" title="coffea.processor.dataframe.LazyDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.dataframe.LazyDataFrame</span></code></a></p></td>
+<td><p>Simple delayed uproot reader (a la lazyarrays) Keeps track of values accessed, for later parsing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.dataframe.PreloadedDataFrame.html#coffea.processor.dataframe.PreloadedDataFrame" title="coffea.processor.dataframe.PreloadedDataFrame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.dataframe.PreloadedDataFrame</span></code></a></p></td>
+<td><p>For instances like spark where the columns are preloaded Require input number of rows (don’t want to implicitly rely on picking a random item) Still keep track of what was accessed in case it is of use</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.helpers.Weights.html#coffea.processor.helpers.Weights" title="coffea.processor.helpers.Weights"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.helpers.Weights</span></code></a></p></td>
+<td><p>Keep track of event weight corrections, as well as any accompanying systematic shifts via multiplicative modifiers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.helpers.PackedSelection.html#coffea.processor.helpers.PackedSelection" title="coffea.processor.helpers.PackedSelection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.helpers.PackedSelection</span></code></a></p></td>
+<td><p>Stores several boolean masks (cuts, selections) in a compact manner and evaluates arbitrary requirements on each in an CPU-efficient way</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.executor.iterative_executor.html#coffea.processor.executor.iterative_executor" title="coffea.processor.executor.iterative_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.executor.iterative_executor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.executor.futures_executor.html#coffea.processor.executor.futures_executor" title="coffea.processor.executor.futures_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.executor.futures_executor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.executor.run_uproot_job.html#coffea.processor.executor.run_uproot_job" title="coffea.processor.executor.run_uproot_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.executor.run_uproot_job</span></code></a></p></td>
+<td><p>A convenience wrapper to submit jobs for a file set, which is a dictionary of dataset: [file list] entries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.executor.run_parsl_job.html#coffea.processor.executor.run_parsl_job" title="coffea.processor.executor.run_parsl_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.executor.run_parsl_job</span></code></a></p></td>
+<td><p>A convenience wrapper to submit jobs for a file, which is a dictionary of dataset: [file list] entries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.executor.run_spark_job.html#coffea.processor.executor.run_spark_job" title="coffea.processor.executor.run_spark_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.executor.run_spark_job</span></code></a></p></td>
+<td><p>A convenience wrapper to submit jobs for spark datasets, which is a dictionary of dataset: [file list] entries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.accumulator.value_accumulator.html#coffea.processor.accumulator.value_accumulator" title="coffea.processor.accumulator.value_accumulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.accumulator.value_accumulator</span></code></a></p></td>
+<td><p>Holds a value of arbitrary type, with identity as constructed by default_factory</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.accumulator.column_accumulator.html#coffea.processor.accumulator.column_accumulator" title="coffea.processor.accumulator.column_accumulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.accumulator.column_accumulator</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.accumulator.set_accumulator.html#coffea.processor.accumulator.set_accumulator" title="coffea.processor.accumulator.set_accumulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.accumulator.set_accumulator</span></code></a></p></td>
+<td><p>A set with accumulator semantics</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.accumulator.dict_accumulator.html#coffea.processor.accumulator.dict_accumulator" title="coffea.processor.accumulator.dict_accumulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.accumulator.dict_accumulator</span></code></a></p></td>
+<td><p>Like a dict but also has accumulator semantics It is assumed that the contents of the dict have accumulator semantics</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.accumulator.defaultdict_accumulator.html#coffea.processor.accumulator.defaultdict_accumulator" title="coffea.processor.accumulator.defaultdict_accumulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.accumulator.defaultdict_accumulator</span></code></a></p></td>
+<td><p>Like a defaultdict but also has accumulator semantics It is assumed that the contents of the dict have accumulator semantics</p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.parsl.parsl_executor.ParslExecutor.html#coffea.processor.parsl.parsl_executor.ParslExecutor" title="coffea.processor.parsl.parsl_executor.ParslExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.parsl.parsl_executor.ParslExecutor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.parsl.parsl_executor.parsl_executor.html#coffea.processor.parsl.parsl_executor.parsl_executor" title="coffea.processor.parsl.parsl_executor.parsl_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.parsl.parsl_executor.parsl_executor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/coffea.processor.spark.spark_executor.SparkExecutor.html#coffea.processor.spark.spark_executor.SparkExecutor" title="coffea.processor.spark.spark_executor.SparkExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.spark.spark_executor.SparkExecutor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/coffea.processor.spark.spark_executor.spark_executor.html#coffea.processor.spark.spark_executor.spark_executor" title="coffea.processor.spark.spark_executor.spark_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coffea.processor.spark.spark_executor.spark_executor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stubs/coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray.html" class="btn btn-neutral float-right" title="coffea.analysis_objects.JaggedCandidateArray.JaggedCandidateArray" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="muonspectrum_v4.html" class="btn btn-neutral float-left" title="Four Muon Spectrum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Fermi National Accelerator Laboratory
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

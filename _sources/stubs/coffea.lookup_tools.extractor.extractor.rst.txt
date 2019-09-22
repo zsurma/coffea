@@ -1,0 +1,28 @@
+coffea.lookup\_tools.extractor.extractor
+========================================
+
+.. currentmodule:: coffea.lookup_tools.extractor
+
+.. autoclass:: extractor
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~extractor.__init__
+      ~extractor.add_weight_set
+      ~extractor.add_weight_sets
+      ~extractor.extract_from_file
+      ~extractor.finalize
+      ~extractor.import_file
+      ~extractor.make_evaluator
+   
+   
+
+   
+   
+   
