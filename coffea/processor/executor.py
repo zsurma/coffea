@@ -5,6 +5,10 @@ import uproot
 from . import ProcessorABC, LazyDataFrame
 from .accumulator import value_accumulator, set_accumulator, dict_accumulator
 
+# Work Queue Added
+import dill
+from work_queue import *
+
 try:
     from collections.abc import Mapping, Sequence
     from functools import lru_cache
@@ -33,6 +37,34 @@ def iterative_executor(items, function, accumulator, status=True, unit='items', 
         accumulator += function(item, **kwargs)
     return accumulator
 
+
+def work_queue_executor(items, function, accumulator, status=True, unit='items', desc='Processing',
+                        filepath='~/ccl-work/coffea_work', **kwargs):
+    # Pickle function
+    with open(os.path.join(filepath, 'function.p'), 'wb') as wf:
+        dill.dump(function, wf)
+
+    # Now: open function back again
+    with open(os.path.join(filepath, 'function.p'), 'rb') as rf:
+        function_unpickle = dill.load(rf)
+
+    for i, item in tqdm(enumerate(items), disable=not status, unit=unit, total=len(items), desc=desc):
+        # Pickle item
+        with open(os.path.join(filepath, 'item_{}.p'.format(i)), 'wb') as wf:
+            dill.dump(item, wf)
+
+        # Now: open item back again
+        with open(os.path.join(filepath, 'item_{}.p'.format(i)), 'rb') as rf:
+            item_unpickle = dill.load(rf)
+
+        # Pass pickled function and item to WQ, get output containing computed result (TODO)
+
+        # Unpickle, add back to accumulator
+        accumulator += function_unpickle(item_unpickle, **kwargs)
+        
+
+        #accumulator += function(item, **kwargs)
+    return accumulator
 
 def default_future_add(output, result):
     output += result
@@ -189,6 +221,76 @@ def run_uproot_job(fileset, treename, processor_instance, executor, executor_arg
         return out, wrapped_out['metrics']
     return out
 
+
+def run_workqueue_job(fileset, treename, processor_instance, executor, executor_args={}, chunksize=500000, maxchunks=None):
+    '''
+    A convenience wrapper to submit jobs for a file set, which is a
+    dictionary of dataset: [file list] entries.  Supports only uproot
+    reading, via the LazyDataFrame class.  For more customized processing,
+    e.g. to read other objects from the files and pass them into data frames,
+    one can write a similar function in their user code.
+
+    Parameters
+    ----------
+        fileset:
+            dictionary {dataset: [file, file], }
+        treename:
+            name of tree inside each root file, can be ``None``
+
+            .. note:: treename can also be defined in fileset, which will override the passed treename
+        processor_instance:
+            an instance of a class deriving from ProcessorABC
+        executor:
+            any of `iterative_executor`, `futures_executor`, etc.
+
+            In general, a function that takes 3 arguments: items, function accumulator
+            and performs some action equivalent to:
+            for item in items: accumulator += function(item)
+        executor_args:
+            extra arguments to pass to executor
+            currently supported:
+                workers: number of parallel processes for futures
+                pre_workers: number of parallel threads for calculating chunking
+                savemetrics: save some detailed metrics for xrootd processing
+                flatten: flatten all branches returned by the dataframe (no jagged structure)
+        chunksize:
+            number of entries to process at a time in the data frame
+        maxchunks:
+            maximum number of chunks to process per dataset
+    '''
+    if not isinstance(fileset, Mapping):
+        raise ValueError("Expected fileset to be a mapping dataset: list(files)")
+    if not isinstance(processor_instance, ProcessorABC):
+        raise ValueError("Expected processor_instance to derive from ProcessorABC")
+
+    executor_args.setdefault('workers', 1)
+    executor_args.setdefault('pre_workers', 4 * executor_args['workers'])
+    executor_args.setdefault('savemetrics', False)
+
+    tn = treename
+    items = []
+    for dataset, filelist in tqdm(fileset.items(), desc='Preprocessing'):
+        if isinstance(filelist, dict):
+            tn = filelist['treename'] if 'treename' in filelist else tn
+            filelist = filelist['files']
+        if not isinstance(filelist, list):
+            raise ValueError('list of filenames in fileset must be a list or a dict')
+        if maxchunks is not None:
+            chunks = _get_chunking_lazy(tuple(filelist), tn, chunksize)
+        else:
+            chunks = _get_chunking(tuple(filelist), tn, chunksize, executor_args['pre_workers'])
+        for ichunk, chunk in enumerate(chunks):
+            if (maxchunks is not None) and (ichunk > maxchunks):
+                break
+            items.append((dataset, chunk[0], tn, chunk[1], chunk[2], processor_instance))
+
+    out = processor_instance.accumulator.identity()
+    wrapped_out = dict_accumulator({'out': out, 'metrics': dict_accumulator()})
+    executor(items, _work_function, wrapped_out, **executor_args)
+    processor_instance.postprocess(out)
+    if executor_args['savemetrics']:
+        return out, wrapped_out['metrics']
+    return out
 
 def run_parsl_job(fileset, treename, processor_instance, executor, data_flow=None, executor_args={}, chunksize=500000):
     '''
