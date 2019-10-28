@@ -39,31 +39,90 @@ def iterative_executor(items, function, accumulator, status=True, unit='items', 
 
 
 def work_queue_executor(items, function, accumulator, status=True, unit='items', desc='Processing',
-                        filepath='~/ccl-work/coffea_work', **kwargs):
+                        filepath='.', **kwargs):
     # Pickle function
     with open(os.path.join(filepath, 'function.p'), 'wb') as wf:
+    #with open('function.p', 'wb') as wf:
         dill.dump(function, wf)
 
-    # Now: open function back again
-    with open(os.path.join(filepath, 'function.p'), 'rb') as rf:
-        function_unpickle = dill.load(rf)
+    # Set up Work Queue
+    port = WORK_QUEUE_DEFAULT_PORT
 
+    command_path = os.path.join(filepath, 'exec_compute.py')
+    #command_path = './exec_compute.py'
+    #command_path = '~/ccl-work/coffea_work/exec_compute.py'
+    if not os.path.exists(command_path):
+        print('{} not found'.format(command_path))
+        sys.exit(1)
+
+    try:
+        q = WorkQueue(port)
+    except:
+        print('Instantiation of Work Queue failed')
+        sys.exit(1)
+
+    print('Listening on port {}...'.format(q.port))
+
+    # Define function input here so it isn't redeclared every time
+    infile_function = os.path.join(filepath, 'function.p')
+    #infile_function = 'function.p'
+    #infile_function = '~/ccl-work/coffea_work/function.p'
+
+    # Dictionary to keep track of output file corresponding to task id
+    id_output = {}
+    
     for i, item in tqdm(enumerate(items), disable=not status, unit=unit, total=len(items), desc=desc):
         # Pickle item
         with open(os.path.join(filepath, 'item_{}.p'.format(i)), 'wb') as wf:
+        #with open('item_{}.p'.format(i), 'wb') as wf:
+        #with open('~/ccl-work/coffea_work/item_{}.p'.format(i), 'wb') as wf:
             dill.dump(item, wf)
 
-        # Now: open item back again
-        with open(os.path.join(filepath, 'item_{}.p'.format(i)), 'rb') as rf:
-            item_unpickle = dill.load(rf)
+        infile_item = os.path.join(filepath, 'item_{}.p'.format(i))
+        #infile_item = 'item_{}.p'.format(i)
+        outfile = os.path.join(filepath, 'output_{}.p'.format(i))
+        #outfile = 'output_{}.p'.format(i)
+        #infile_item = '~/ccl-work/coffea_work/item_{}.p'.format(i)
+        #outfile = '~/ccl-work/coffea_work/output_{}.p'.format(i)
+        
+        command = '{} {} {} {}'.format(command_path, infile_function, infile_item, outfile)
+
+        t = Task(command)
+
+        t.specify_file(command_path, command_path, WORK_QUEUE_INPUT, cache=False)
+        t.specify_file(infile_function, infile_function, WORK_QUEUE_INPUT, cache=False)
+        t.specify_file(infile_item, infile_item, WORK_QUEUE_INPUT, cache=False)
+        t.specify_file(outfile, outfile, WORK_QUEUE_OUTPUT, cache=False)
+
+        # will this fix root data?
+        root_data = item[1]
+        t.specify_file(root_data, root_data, WORK_QUEUE_INPUT, cache=False)
+
+        taskid = q.submit(t)
+        # Add pair to dict
+        id_output['{}'.format(taskid)] = outfile
+
+        print('Submitted task (id #{}): {}'.format(taskid, command))
+        print('Waiting for tasks to complete...')
 
         # Pass pickled function and item to WQ, get output containing computed result (TODO)
 
         # Unpickle, add back to accumulator
-        accumulator += function_unpickle(item_unpickle, **kwargs)
+        #accumulator += function_unpickle(item_unpickle, **kwargs)
         
-
         #accumulator += function(item, **kwargs)
+    
+    while not q.empty():
+        t = q.wait(5)
+        if t:
+            print('Task (id #{}) complete: {} (return code {})'.format(t.id, t.command, t.return_status))
+            # Unpickle output, add to accumulator
+            with open(id_output['{}'.format(t.id)], 'rb') as rf:
+            #with open('~/ccl-work/coffea_work/{}'.format(t.output), 'rb') as rf:
+                unpickle_output = dill.load(rf)
+
+            accumulator += unpickle_output
+
     return accumulator
 
 def default_future_add(output, result):
