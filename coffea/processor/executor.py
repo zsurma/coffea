@@ -42,15 +42,12 @@ def work_queue_executor(items, function, accumulator, status=True, unit='items',
                         filepath='.', **kwargs):
     # Pickle function
     with open(os.path.join(filepath, 'function.p'), 'wb') as wf:
-    #with open('function.p', 'wb') as wf:
         dill.dump(function, wf)
 
     # Set up Work Queue
     port = WORK_QUEUE_DEFAULT_PORT
 
     command_path = os.path.join(filepath, 'exec_compute.py')
-    #command_path = './exec_compute.py'
-    #command_path = '~/ccl-work/coffea_work/exec_compute.py'
     if not os.path.exists(command_path):
         print('{} not found'.format(command_path))
         sys.exit(1)
@@ -65,8 +62,6 @@ def work_queue_executor(items, function, accumulator, status=True, unit='items',
 
     # Define function input here so it isn't redeclared every time
     infile_function = os.path.join(filepath, 'function.p')
-    #infile_function = 'function.p'
-    #infile_function = '~/ccl-work/coffea_work/function.p'
 
     # Dictionary to keep track of output file corresponding to task id
     id_output = {}
@@ -74,25 +69,27 @@ def work_queue_executor(items, function, accumulator, status=True, unit='items',
     for i, item in tqdm(enumerate(items), disable=not status, unit=unit, total=len(items), desc=desc):
         # Pickle item
         with open(os.path.join(filepath, 'item_{}.p'.format(i)), 'wb') as wf:
-        #with open('item_{}.p'.format(i), 'wb') as wf:
-        #with open('~/ccl-work/coffea_work/item_{}.p'.format(i), 'wb') as wf:
             dill.dump(item, wf)
 
         infile_item = os.path.join(filepath, 'item_{}.p'.format(i))
-        #infile_item = 'item_{}.p'.format(i)
         outfile = os.path.join(filepath, 'output_{}.p'.format(i))
-        #outfile = 'output_{}.p'.format(i)
-        #infile_item = '~/ccl-work/coffea_work/item_{}.p'.format(i)
-        #outfile = '~/ccl-work/coffea_work/output_{}.p'.format(i)
         
-        command = '{} {} {} {}'.format(command_path, infile_function, infile_item, outfile)
+        command = 'python {} {} {} {}'.format(command_path, infile_function, infile_item, outfile)
+        full_command = './python_package_run coffea-old "{}"'.format(command)
 
-        t = Task(command)
+        t = Task(full_command)
+        t.specify_cores(1)
+        t.specify_memory(1)
+        t.specify_disk(1)
 
         t.specify_file(command_path, command_path, WORK_QUEUE_INPUT, cache=False)
         t.specify_file(infile_function, infile_function, WORK_QUEUE_INPUT, cache=False)
         t.specify_file(infile_item, infile_item, WORK_QUEUE_INPUT, cache=False)
         t.specify_file(outfile, outfile, WORK_QUEUE_OUTPUT, cache=False)
+
+        # test environment
+        t.specify_file('/tmp/coffea-old.tar.gz', 'coffea-old.tar.gz', WORK_QUEUE_INPUT, cache=True)
+        t.specify_file('/tmp/python_package_run', 'python_package_run', WORK_QUEUE_INPUT, cache=True)
 
         # will this fix root data?
         root_data = item[1]
@@ -102,23 +99,22 @@ def work_queue_executor(items, function, accumulator, status=True, unit='items',
         # Add pair to dict
         id_output['{}'.format(taskid)] = outfile
 
-        print('Submitted task (id #{}): {}'.format(taskid, command))
-        print('Waiting for tasks to complete...')
+        print('Submitted task (id #{}): {}'.format(taskid, full_command))
 
         # Pass pickled function and item to WQ, get output containing computed result (TODO)
 
         # Unpickle, add back to accumulator
-        #accumulator += function_unpickle(item_unpickle, **kwargs)
-        
-        #accumulator += function(item, **kwargs)
     
+    print("Waiting for tasks to complete...")
     while not q.empty():
         t = q.wait(5)
         if t:
             print('Task (id #{}) complete: {} (return code {})'.format(t.id, t.command, t.return_status))
+            
+            print('Output: {}'.format(t.output))
+            
             # Unpickle output, add to accumulator
             with open(id_output['{}'.format(t.id)], 'rb') as rf:
-            #with open('~/ccl-work/coffea_work/{}'.format(t.output), 'rb') as rf:
                 unpickle_output = dill.load(rf)
 
             accumulator += unpickle_output
